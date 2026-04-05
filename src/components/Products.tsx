@@ -2,12 +2,13 @@
 
 import { useState } from 'react'
 import { PRODUCTS, CATEGORY_LABELS, type ProductCategory } from '@/data/products'
-import { PRODUCT_IMAGES } from '@/data/product-images'
+import { useProductImages } from '@/lib/useProductImages'
 import { getWhatsAppProductUrl } from '@/lib/constants'
 import Animate from '@/components/Animate'
 
 export default function Products() {
   const [activeCategory, setActiveCategory] = useState<ProductCategory | 'all'>('all')
+  const PRODUCT_IMAGES = useProductImages()
 
   const categories: Array<ProductCategory | 'all'> = ['all', 'floral', 'special', 'arrangements', 'premium']
   const categoryLabels: Record<ProductCategory | 'all', string> = {
