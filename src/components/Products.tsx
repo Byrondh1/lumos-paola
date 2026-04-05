@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { PRODUCTS, CATEGORY_LABELS, type ProductCategory } from '@/data/products'
+import { PRODUCT_IMAGES } from '@/data/product-images'
 import { getWhatsAppProductUrl } from '@/lib/constants'
 import Animate from '@/components/Animate'
 
@@ -56,107 +57,113 @@ export default function Products() {
 
         {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((product, idx) => (
-            <Animate
-              key={`${product.id}-${activeCategory}`}
-              animation="fade-up"
-              delay={(idx % 3) * 100}
-              className="relative group"
-            >
-              {/* Hover popup — variants gallery */}
-              {product.variants && product.variants.length > 0 && (
-                <div className="absolute bottom-[calc(100%+10px)] left-0 right-0 z-50 opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-300 ease-out pointer-events-none">
-                  <div className="bg-zinc-950/95 backdrop-blur-md border border-brand-gold/25 rounded-2xl p-3.5 shadow-2xl shadow-black/70">
-                    {/* Popup header */}
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand-gold" />
-                      <p className="text-brand-gold text-[10px] font-semibold uppercase tracking-[0.15em]">
-                        Modelos disponibles
-                      </p>
-                    </div>
-                    {/* Thumbnails */}
-                    <div className={`grid gap-1.5 ${product.variants.length === 2 ? 'grid-cols-2' : 'grid-cols-3'}`}>
-                      {product.variants.map((variant, i) => (
-                        <div
-                          key={i}
-                          className="aspect-square rounded-xl overflow-hidden ring-1 ring-zinc-700/60 hover:ring-brand-gold/50 transition-all duration-200"
-                        >
-                          <img
-                            src={variant}
-                            alt={`${product.name} — modelo ${i + 1}`}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  {/* Arrow pointing down */}
-                  <div className="flex justify-center -mt-px overflow-hidden h-2">
-                    <div className="w-3 h-3 bg-zinc-950/95 border-r border-b border-brand-gold/25 rotate-45 -translate-y-1.5" />
-                  </div>
-                </div>
-              )}
+          {filtered.map((product, idx) => {
+            const images = PRODUCT_IMAGES[product.id] ?? []
+            const mainImage = images[0]
+            const allImages = images  // all images shown in popup
 
-              {/* Product card */}
-              <div className="card-dark relative flex flex-col h-full">
-                {/* Featured Badge */}
-                {product.isFeatured && (
-                  <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 bg-brand-gold text-brand-black text-xs font-bold px-3 py-1 rounded-full">
-                    <StarIcon className="w-3 h-3" />
-                    Producto Estrella
+            return (
+              <Animate
+                key={`${product.id}-${activeCategory}`}
+                animation="fade-up"
+                delay={(idx % 3) * 100}
+                className="relative group"
+              >
+                {/* Hover popup — variants gallery */}
+                {allImages.length > 1 && (
+                  <div className="absolute bottom-[calc(100%+10px)] left-0 right-0 z-50 opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-300 ease-out pointer-events-none">
+                    <div className="bg-zinc-950/95 backdrop-blur-md border border-brand-gold/25 rounded-2xl p-3.5 shadow-2xl shadow-black/70">
+                      {/* Popup header */}
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-brand-gold" />
+                        <p className="text-brand-gold text-[10px] font-semibold uppercase tracking-[0.15em]">
+                          Modelos disponibles
+                        </p>
+                      </div>
+                      {/* Thumbnails */}
+                      <div className={`grid gap-1.5 ${allImages.length === 2 ? 'grid-cols-2' : allImages.length <= 4 ? 'grid-cols-2' : 'grid-cols-3'}`}>
+                        {allImages.map((src, i) => (
+                          <div
+                            key={i}
+                            className="aspect-square rounded-xl overflow-hidden ring-1 ring-zinc-700/60 hover:ring-brand-gold/50 transition-all duration-200"
+                          >
+                            <img
+                              src={src}
+                              alt={`${product.name} — modelo ${i + 1}`}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    {/* Arrow pointing down */}
+                    <div className="flex justify-center -mt-px overflow-hidden h-2">
+                      <div className="w-3 h-3 bg-zinc-950/95 border-r border-b border-brand-gold/25 rotate-45 -translate-y-1.5" />
+                    </div>
                   </div>
                 )}
 
-                {/* Variants indicator */}
-                {product.variants && product.variants.length > 0 && (
-                  <div className="absolute top-4 right-4 z-10 flex items-center gap-1 bg-zinc-900/80 backdrop-blur-sm border border-brand-gold/30 text-brand-gold text-[10px] font-semibold px-2 py-1 rounded-full">
-                    <ImagesIcon className="w-3 h-3" />
-                    {product.variants.length + 1} modelos
-                  </div>
-                )}
-
-                {/* Product image */}
-                <div className="relative h-52 bg-zinc-800 overflow-hidden">
-                  {product.image ? (
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  ) : (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <ProductPlaceholder category={product.category} />
+                {/* Product card */}
+                <div className="card-dark relative flex flex-col h-full">
+                  {/* Featured Badge */}
+                  {product.isFeatured && (
+                    <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 bg-brand-gold text-brand-black text-xs font-bold px-3 py-1 rounded-full">
+                      <StarIcon className="w-3 h-3" />
+                      Producto Estrella
                     </div>
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/60 to-transparent" />
-                </div>
 
-                {/* Content */}
-                <div className="p-5 flex flex-col flex-1">
-                  <div className="mb-2">
-                    <span className="text-xs text-brand-gold/70 uppercase tracking-wider font-medium">
-                      {CATEGORY_LABELS[product.category]}
-                    </span>
+                  {/* Models indicator */}
+                  {allImages.length > 1 && (
+                    <div className="absolute top-4 right-4 z-10 flex items-center gap-1 bg-zinc-900/80 backdrop-blur-sm border border-brand-gold/30 text-brand-gold text-[10px] font-semibold px-2 py-1 rounded-full">
+                      <ImagesIcon className="w-3 h-3" />
+                      {allImages.length} modelos
+                    </div>
+                  )}
+
+                  {/* Product image */}
+                  <div className="relative h-52 bg-zinc-800 overflow-hidden">
+                    {mainImage ? (
+                      <img
+                        src={mainImage}
+                        alt={product.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <ProductPlaceholder category={product.category} />
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/60 to-transparent" />
                   </div>
-                  <h3 className="font-heading font-semibold text-lg text-brand-white mb-2 group-hover:text-brand-gold transition-colors">
-                    {product.name}
-                  </h3>
-                  <p className="text-brand-gray text-sm leading-relaxed flex-1 mb-5">
-                    {product.description}
-                  </p>
-                  <a
-                    href={getWhatsAppProductUrl(product.name)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-gold w-full justify-center text-sm py-2.5"
-                  >
-                    <WhatsAppIcon className="w-4 h-4" />
-                    Consultar precio
-                  </a>
+
+                  {/* Content */}
+                  <div className="p-5 flex flex-col flex-1">
+                    <div className="mb-2">
+                      <span className="text-xs text-brand-gold/70 uppercase tracking-wider font-medium">
+                        {CATEGORY_LABELS[product.category]}
+                      </span>
+                    </div>
+                    <h3 className="font-heading font-semibold text-lg text-brand-white mb-2 group-hover:text-brand-gold transition-colors">
+                      {product.name}
+                    </h3>
+                    <p className="text-brand-gray text-sm leading-relaxed flex-1 mb-5">
+                      {product.description}
+                    </p>
+                    <a
+                      href={getWhatsAppProductUrl(product.name)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-gold w-full justify-center text-sm py-2.5"
+                    >
+                      <WhatsAppIcon className="w-4 h-4" />
+                      Consultar precio
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </Animate>
-          ))}
+              </Animate>
+            )
+          })}
         </div>
 
         {/* Bottom CTA */}
