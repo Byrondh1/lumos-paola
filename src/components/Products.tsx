@@ -5,10 +5,17 @@ import { PRODUCTS, CATEGORY_LABELS, type ProductCategory } from '@/data/products
 import { useProductImages } from '@/lib/useProductImages'
 import { getWhatsAppProductUrl } from '@/lib/constants'
 import Animate from '@/components/Animate'
+import Lightbox from '@/components/Lightbox'
+
+interface LightboxState { images: string[]; index: number; productName: string }
 
 export default function Products() {
   const [activeCategory, setActiveCategory] = useState<ProductCategory | 'all'>('all')
   const PRODUCT_IMAGES = useProductImages()
+  const [lightbox, setLightbox] = useState<LightboxState | null>(null)
+
+  const openLightbox = (images: string[], index: number, productName: string) =>
+    setLightbox({ images, index, productName })
 
   const categories: Array<ProductCategory | 'all'> = ['all', 'floral', 'special', 'arrangements', 'premium']
   const categoryLabels: Record<ProductCategory | 'all', string> = {
@@ -72,7 +79,7 @@ export default function Products() {
               >
                 {/* Hover popup — variants gallery */}
                 {allImages.length > 1 && (
-                  <div className="absolute bottom-[calc(100%+10px)] left-0 right-0 z-50 opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-300 ease-out pointer-events-none">
+                  <div className="absolute bottom-[calc(100%+10px)] left-0 right-0 z-50 opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto">
                     <div className="bg-zinc-950/95 backdrop-blur-md border border-brand-gold/25 rounded-2xl p-3.5 shadow-2xl shadow-black/70">
                       {/* Popup header */}
                       <div className="flex items-center gap-2 mb-3">
@@ -84,16 +91,17 @@ export default function Products() {
                       {/* Thumbnails */}
                       <div className={`grid gap-1.5 ${allImages.length === 2 ? 'grid-cols-2' : allImages.length <= 4 ? 'grid-cols-2' : 'grid-cols-3'}`}>
                         {allImages.map((src, i) => (
-                          <div
+                          <button
                             key={i}
-                            className="aspect-square rounded-xl overflow-hidden ring-1 ring-zinc-700/60 hover:ring-brand-gold/50 transition-all duration-200"
+                            onClick={() => openLightbox(allImages, i, product.name)}
+                            className="aspect-square rounded-xl overflow-hidden ring-1 ring-zinc-700/60 hover:ring-brand-gold/60 hover:scale-105 transition-all duration-200 cursor-zoom-in"
                           >
                             <img
                               src={src}
                               alt={`${product.name} — modelo ${i + 1}`}
                               className="w-full h-full object-cover"
                             />
-                          </div>
+                          </button>
                         ))}
                       </div>
                     </div>
@@ -125,17 +133,22 @@ export default function Products() {
                   {/* Product image */}
                   <div className="relative h-52 bg-zinc-800 overflow-hidden">
                     {mainImage ? (
-                      <img
-                        src={mainImage}
-                        alt={product.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
+                      <button
+                        onClick={() => openLightbox(allImages, 0, product.name)}
+                        className="w-full h-full cursor-zoom-in"
+                      >
+                        <img
+                          src={mainImage}
+                          alt={product.name}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </button>
                     ) : (
                       <div className="absolute inset-0 flex items-center justify-center">
                         <ProductPlaceholder category={product.category} />
                       </div>
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/60 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/60 to-transparent pointer-events-none" />
                   </div>
 
                   {/* Content */}
@@ -177,6 +190,17 @@ export default function Products() {
           </div>
         </Animate>
       </div>
+
+      {/* Lightbox */}
+      {lightbox && (
+        <Lightbox
+          images={lightbox.images}
+          index={lightbox.index}
+          productName={lightbox.productName}
+          onClose={() => setLightbox(null)}
+          onNavigate={(i) => setLightbox((lb) => lb ? { ...lb, index: i } : null)}
+        />
+      )}
     </section>
   )
 }
