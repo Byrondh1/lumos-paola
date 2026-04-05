@@ -7,6 +7,7 @@ export interface Product {
   category: ProductCategory
   isFeatured?: boolean
   image?: string
+  variants?: string[]   // Fotos adicionales de modelos — se muestran en el popup al hacer hover
 }
 
 export const CATEGORY_LABELS: Record<ProductCategory, string> = {
@@ -24,6 +25,11 @@ export const PRODUCTS: Product[] = [
     description: 'Individuales o en sets. Elegancia floral capturada en cera artesanal con aromas únicos.',
     category: 'floral',
     image: '/images/products/rosas.jpg',
+    variants: [
+      '/images/products/rosas-2.jpg',
+      '/images/products/rosas-3.jpg',
+      '/images/products/rosas-4.jpg',
+    ],
   },
   {
     id: 'girasoles',
@@ -31,6 +37,10 @@ export const PRODUCTS: Product[] = [
     description: 'Individuales o en sets. Ideales para dar luz y energía a cualquier espacio.',
     category: 'floral',
     image: '/images/products/girasoles.jpg',
+    variants: [
+      '/images/products/girasoles-2.jpg',
+      '/images/products/girasoles-3.jpg',
+    ],
   },
   {
     id: 'margaritas',
@@ -38,6 +48,10 @@ export const PRODUCTS: Product[] = [
     description: 'Individuales o en sets. Un toque sencillo y elegante para tu hogar.',
     category: 'floral',
     image: '/images/products/margaritas.jpg',
+    variants: [
+      '/images/products/margaritas-2.jpg',
+      '/images/products/margaritas-3.jpg',
+    ],
   },
   {
     id: 'peonias',
@@ -45,6 +59,10 @@ export const PRODUCTS: Product[] = [
     description: 'Individuales o en sets. Muy buscadas por su volumen y sofisticación.',
     category: 'floral',
     image: '/images/products/peonias.jpg',
+    variants: [
+      '/images/products/peonias-2.jpg',
+      '/images/products/peonias-3.jpg',
+    ],
   },
   // Especiales & Religiosas
   {
@@ -54,6 +72,11 @@ export const PRODUCTS: Product[] = [
     category: 'special',
     isFeatured: true,
     image: '/images/products/lupita.jpg',
+    variants: [
+      '/images/products/lupita-2.jpg',
+      '/images/products/lupita-3.jpg',
+      '/images/products/lupita-4.jpg',
+    ],
   },
   {
     id: 'recordatorios',
@@ -61,6 +84,11 @@ export const PRODUCTS: Product[] = [
     description: 'Diseños específicos y personalizados para Bodas, Bautizos y Graduaciones.',
     category: 'special',
     image: '/images/products/recordatorios.jpg',
+    variants: [
+      '/images/products/recordatorios-2.jpg',
+      '/images/products/recordatorios-3.jpg',
+      '/images/products/recordatorios-4.jpg',
+    ],
   },
   // Arreglos
   {
@@ -69,6 +97,10 @@ export const PRODUCTS: Product[] = [
     description: 'Combinaciones florales en cera, perfectas como detalle especial para cualquier ocasión.',
     category: 'arrangements',
     image: '/images/products/arreglo-14.jpg',
+    variants: [
+      '/images/products/arreglo-14-2.jpg',
+      '/images/products/arreglo-14-3.jpg',
+    ],
   },
   {
     id: 'arreglo-20',
@@ -76,6 +108,10 @@ export const PRODUCTS: Product[] = [
     description: 'Una opción más lujosa y completa. El regalo ideal para sorprender a alguien especial.',
     category: 'arrangements',
     image: '/images/products/arreglo-20.jpg',
+    variants: [
+      '/images/products/arreglo-20-2.jpg',
+      '/images/products/arreglo-20-3.jpg',
+    ],
   },
   {
     id: 'canasta',
@@ -83,6 +119,10 @@ export const PRODUCTS: Product[] = [
     description: 'Mezcla de velas aromáticas y flores decorativas. El regalo perfecto en una presentación única.',
     category: 'arrangements',
     image: '/images/products/canasta.jpg',
+    variants: [
+      '/images/products/canasta-2.jpg',
+      '/images/products/canasta-3.jpg',
+    ],
   },
   // Línea Premium
   {
@@ -91,6 +131,10 @@ export const PRODUCTS: Product[] = [
     description: 'Especial para el Día de la Madre. Una experiencia de aroma y amor en una caja única.',
     category: 'premium',
     image: '/images/products/caja-mom.jpg',
+    variants: [
+      '/images/products/caja-mom-2.jpg',
+      '/images/products/caja-mom-3.jpg',
+    ],
   },
   {
     id: 'caja-love',
@@ -98,6 +142,10 @@ export const PRODUCTS: Product[] = [
     description: 'Perfecta para San Valentín o aniversarios. Transmite amor con cada destello.',
     category: 'premium',
     image: '/images/products/caja-love.jpg',
+    variants: [
+      '/images/products/caja-love-2.jpg',
+      '/images/products/caja-love-3.jpg',
+    ],
   },
   {
     id: 'caja-personalizada',
@@ -105,5 +153,10 @@ export const PRODUCTS: Product[] = [
     description: 'Empaques robustos y elegantes que el cliente puede conservar. 100% a tu medida.',
     category: 'premium',
     image: '/images/products/caja-personalizada.jpg',
+    variants: [
+      '/images/products/caja-personalizada-2.jpg',
+      '/images/products/caja-personalizada-3.jpg',
+      '/images/products/caja-personalizada-4.jpg',
+    ],
   },
 ]
