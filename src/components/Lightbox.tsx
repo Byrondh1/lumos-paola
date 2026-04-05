@@ -40,27 +40,9 @@ export default function Lightbox({ images, index, productName, onClose, onNaviga
       {/* Backdrop */}
       <div className="absolute inset-0 bg-black/92 backdrop-blur-md" />
 
-      {/* Close button */}
-      <button
-        onClick={onClose}
-        aria-label="Cerrar"
-        className="absolute top-5 right-5 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-zinc-900/80 border border-zinc-700 text-zinc-400 hover:text-brand-gold hover:border-brand-gold/50 transition-all duration-200"
-      >
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-
-      {/* Counter */}
-      <div className="absolute top-5 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 bg-zinc-900/70 border border-zinc-800 rounded-full px-4 py-1.5">
-        <span className="text-brand-gold text-xs font-semibold">{index + 1}</span>
-        <span className="text-zinc-600 text-xs">/</span>
-        <span className="text-zinc-400 text-xs">{images.length}</span>
-      </div>
-
-      {/* Main image */}
+      {/* Main image — z-10, full area, stops propagation so backdrop click doesn't fire */}
       <div
-        className="relative z-10 flex items-center justify-center w-full h-full px-20 py-20"
+        className="absolute inset-0 z-10 flex items-center justify-center px-20 py-20"
         onClick={(e) => e.stopPropagation()}
       >
         <img
@@ -72,12 +54,30 @@ export default function Lightbox({ images, index, productName, onClose, onNaviga
         />
       </div>
 
-      {/* Prev arrow */}
+      {/* Close button — z-20 to sit above the image container */}
+      <button
+        onClick={(e) => { e.stopPropagation(); onClose() }}
+        aria-label="Cerrar"
+        className="absolute top-5 right-5 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-zinc-900/80 border border-zinc-700 text-zinc-400 hover:text-brand-gold hover:border-brand-gold/50 transition-all duration-200"
+      >
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      {/* Counter — z-20 */}
+      <div className="absolute top-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 bg-zinc-900/70 border border-zinc-800 rounded-full px-4 py-1.5 pointer-events-none">
+        <span className="text-brand-gold text-xs font-semibold">{index + 1}</span>
+        <span className="text-zinc-600 text-xs">/</span>
+        <span className="text-zinc-400 text-xs">{images.length}</span>
+      </div>
+
+      {/* Prev arrow — z-20 */}
       {hasPrev && (
         <button
           onClick={(e) => { e.stopPropagation(); prev() }}
           aria-label="Anterior"
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-12 h-12 rounded-full bg-zinc-900/80 border border-zinc-700 text-zinc-300 hover:text-brand-gold hover:border-brand-gold/50 hover:bg-zinc-900 transition-all duration-200"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-zinc-900/80 border border-zinc-700 text-zinc-300 hover:text-brand-gold hover:border-brand-gold/50 hover:bg-zinc-900 transition-all duration-200"
         >
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -85,12 +85,12 @@ export default function Lightbox({ images, index, productName, onClose, onNaviga
         </button>
       )}
 
-      {/* Next arrow */}
+      {/* Next arrow — z-20 */}
       {hasNext && (
         <button
           onClick={(e) => { e.stopPropagation(); next() }}
           aria-label="Siguiente"
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-12 h-12 rounded-full bg-zinc-900/80 border border-zinc-700 text-zinc-300 hover:text-brand-gold hover:border-brand-gold/50 hover:bg-zinc-900 transition-all duration-200"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-zinc-900/80 border border-zinc-700 text-zinc-300 hover:text-brand-gold hover:border-brand-gold/50 hover:bg-zinc-900 transition-all duration-200"
         >
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -98,10 +98,10 @@ export default function Lightbox({ images, index, productName, onClose, onNaviga
         </button>
       )}
 
-      {/* Thumbnail strip */}
+      {/* Thumbnail strip — z-20 */}
       {images.length > 1 && (
         <div
-          className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 flex gap-2"
+          className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex gap-2"
           onClick={(e) => e.stopPropagation()}
         >
           {images.map((src, i) => (
