@@ -31,6 +31,9 @@ export const PRODUCT_IMAGES: Record<string, string[]> = {
     "/images/products/recordatorios/recordatorios.jpg"
   ],
   "rosas": [
+    "/images/products/rosas/rosas-1.jpg",
+    "/images/products/rosas/rosas-2.jpg",
+    "/images/products/rosas/rosas-3.jpg",
     "/images/products/rosas/rosas.jpg"
   ]
 }

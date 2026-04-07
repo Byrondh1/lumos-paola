@@ -1,7 +1,11 @@
 'use client'
 
-import { useEffect, useCallback } from 'react'
+import { useEffect, useCallback, useRef } from 'react'
 import { createPortal } from 'react-dom'
+
+export function isVideo(url: string) {
+  return /\.(mp4|mov)$/i.test(url)
+}
 
 interface LightboxProps {
   images: string[]
@@ -14,6 +18,7 @@ interface LightboxProps {
 export default function Lightbox({ images, index, productName, onClose, onNavigate }: LightboxProps) {
   const hasPrev = index > 0
   const hasNext = index < images.length - 1
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   const prev = useCallback(() => { if (hasPrev) onNavigate(index - 1) }, [hasPrev, index, onNavigate])
   const next = useCallback(() => { if (hasNext) onNavigate(index + 1) }, [hasNext, index, onNavigate])
@@ -32,6 +37,15 @@ export default function Lightbox({ images, index, productName, onClose, onNaviga
     }
   }, [onClose, prev, next])
 
+  // Autoplay when navigating to a video
+  useEffect(() => {
+    if (isVideo(images[index])) {
+      videoRef.current?.play().catch(() => {})
+    }
+  }, [index, images])
+
+  const current = images[index]
+
   return createPortal(
     <div
       className="fixed inset-0 z-[9999] flex items-center justify-center"
@@ -40,21 +54,34 @@ export default function Lightbox({ images, index, productName, onClose, onNaviga
       {/* Backdrop */}
       <div className="absolute inset-0 bg-black/92 backdrop-blur-md" />
 
-      {/* Main image — z-10, full area, stops propagation so backdrop click doesn't fire */}
+      {/* Main media — z-10 */}
       <div
         className="absolute inset-0 z-10 flex items-center justify-center px-20 py-20"
         onClick={(e) => e.stopPropagation()}
       >
-        <img
-          key={images[index]}
-          src={images[index]}
-          alt={`${productName} — modelo ${index + 1}`}
-          className="max-w-full max-h-full object-contain rounded-2xl shadow-2xl shadow-black/80 animate-lb-in"
-          style={{ maxHeight: 'calc(100vh - 140px)', maxWidth: 'calc(100vw - 160px)' }}
-        />
+        {isVideo(current) ? (
+          <video
+            ref={videoRef}
+            key={current}
+            src={current}
+            autoPlay
+            controls
+            playsInline
+            className="max-w-full max-h-full rounded-2xl shadow-2xl shadow-black/80 animate-lb-in"
+            style={{ maxHeight: 'calc(100vh - 140px)', maxWidth: 'calc(100vw - 160px)' }}
+          />
+        ) : (
+          <img
+            key={current}
+            src={current}
+            alt={`${productName} — modelo ${index + 1}`}
+            className="max-w-full max-h-full object-contain rounded-2xl shadow-2xl shadow-black/80 animate-lb-in"
+            style={{ maxHeight: 'calc(100vh - 140px)', maxWidth: 'calc(100vw - 160px)' }}
+          />
+        )}
       </div>
 
-      {/* Close button — z-20 to sit above the image container */}
+      {/* Close button — z-20 */}
       <button
         onClick={(e) => { e.stopPropagation(); onClose() }}
         aria-label="Cerrar"
@@ -108,18 +135,50 @@ export default function Lightbox({ images, index, productName, onClose, onNaviga
             <button
               key={i}
               onClick={() => onNavigate(i)}
-              className={`w-12 h-12 rounded-lg overflow-hidden ring-2 transition-all duration-200 ${
+              className={`relative w-12 h-12 rounded-lg overflow-hidden ring-2 transition-all duration-200 ${
                 i === index
                   ? 'ring-brand-gold scale-110'
                   : 'ring-zinc-700 opacity-50 hover:opacity-100 hover:ring-zinc-500'
               }`}
             >
-              <img src={src} alt="" className="w-full h-full object-cover" />
+              <MediaThumb src={src} alt="" />
+              {isVideo(src) && <PlayOverlay size="sm" />}
             </button>
           ))}
         </div>
       )}
     </div>,
     document.body
+  )
+}
+
+/** Shows first frame for videos, or the image directly. */
+function MediaThumb({ src, alt }: { src: string; alt: string }) {
+  if (isVideo(src)) {
+    return (
+      <video
+        src={src}
+        preload="metadata"
+        muted
+        playsInline
+        className="w-full h-full object-cover"
+      />
+    )
+  }
+  return <img src={src} alt={alt} className="w-full h-full object-cover" />
+}
+
+/** Gold play icon overlay */
+export function PlayOverlay({ size = 'md' }: { size?: 'sm' | 'md' }) {
+  const outer = size === 'sm' ? 'w-6 h-6' : 'w-10 h-10'
+  const icon  = size === 'sm' ? 'w-2.5 h-2.5' : 'w-4 h-4'
+  return (
+    <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+      <div className={`${outer} rounded-full bg-brand-gold/90 flex items-center justify-center shadow-lg`}>
+        <svg className={`${icon} text-brand-black ml-0.5`} viewBox="0 0 24 24" fill="currentColor">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+      </div>
+    </div>
   )
 }

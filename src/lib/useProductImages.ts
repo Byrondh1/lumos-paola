@@ -5,7 +5,7 @@ import { PRODUCT_IMAGES as STATIC_IMAGES } from '@/data/product-images'
 
 const REPO = 'Byrondh1/lumos-paola'
 const BRANCH = 'main'
-const IMAGE_EXTS = /\.(jpg|jpeg|png|webp|gif|avif)$/i
+const IMAGE_EXTS = /\.(jpg|jpeg|png|webp|gif|avif|mp4|mov)$/i
 const RAW_BASE = `https://raw.githubusercontent.com/${REPO}/${BRANCH}`
 
 let cached: Record<string, string[]> | null = null

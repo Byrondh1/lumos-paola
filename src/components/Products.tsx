@@ -5,7 +5,7 @@ import { PRODUCTS, CATEGORY_LABELS, type ProductCategory } from '@/data/products
 import { useProductImages } from '@/lib/useProductImages'
 import { getWhatsAppProductUrl } from '@/lib/constants'
 import Animate from '@/components/Animate'
-import Lightbox from '@/components/Lightbox'
+import Lightbox, { isVideo, PlayOverlay } from '@/components/Lightbox'
 
 interface LightboxState { images: string[]; index: number; productName: string }
 
@@ -94,13 +94,24 @@ export default function Products() {
                           <button
                             key={i}
                             onClick={() => openLightbox(allImages, i, product.name)}
-                            className="aspect-square rounded-xl overflow-hidden ring-1 ring-zinc-700/60 hover:ring-brand-gold/60 hover:scale-105 transition-all duration-200 cursor-zoom-in"
+                            className="relative aspect-square rounded-xl overflow-hidden ring-1 ring-zinc-700/60 hover:ring-brand-gold/60 hover:scale-105 transition-all duration-200 cursor-pointer"
                           >
-                            <img
-                              src={src}
-                              alt={`${product.name} — modelo ${i + 1}`}
-                              className="w-full h-full object-cover"
-                            />
+                            {isVideo(src) ? (
+                              <video
+                                src={src}
+                                preload="metadata"
+                                muted
+                                playsInline
+                                className="w-full h-full object-cover"
+                              />
+                            ) : (
+                              <img
+                                src={src}
+                                alt={`${product.name} — modelo ${i + 1}`}
+                                className="w-full h-full object-cover"
+                              />
+                            )}
+                            {isVideo(src) && <PlayOverlay />}
                           </button>
                         ))}
                       </div>

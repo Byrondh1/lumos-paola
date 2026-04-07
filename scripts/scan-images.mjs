@@ -10,7 +10,7 @@ import path from 'path'
 
 const PRODUCTS_DIR = path.join(process.cwd(), 'public', 'images', 'products')
 const OUTPUT_FILE = path.join(process.cwd(), 'src', 'data', 'product-images.ts')
-const IMAGE_EXTS = /\.(jpg|jpeg|png|webp|gif|avif)$/i
+const IMAGE_EXTS = /\.(jpg|jpeg|png|webp|gif|avif|mp4|mov)$/i
 
 const result = {}
 
