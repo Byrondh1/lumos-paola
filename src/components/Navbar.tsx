@@ -17,18 +17,21 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-brand-black/95 backdrop-blur-md shadow-lg shadow-brand-gold/5'
+          ? 'bg-white/95 backdrop-blur-md shadow-md shadow-brand-green/10'
           : 'bg-transparent'
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
+
           {/* Logo */}
           <a href="#inicio" className="flex items-center gap-2 group">
-            <CandleIcon className="w-8 h-8 text-brand-gold group-hover:scale-110 transition-transform" />
-            <span className="font-heading font-semibold text-lg tracking-wide">
-              <span className="text-gradient-gold">Lumos</span>
-              <span className="text-brand-white"> By Paola</span>
+            <FlameIcon className="w-7 h-7 text-brand-peach group-hover:scale-110 transition-transform" />
+            <span className="font-cursive text-2xl text-brand-green leading-none">
+              Lumos
+              <span className="font-heading font-normal text-base ml-1 text-brand-text-mid not-italic">
+                by Paola
+              </span>
             </span>
           </a>
 
@@ -38,7 +41,7 @@ export default function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="text-sm text-brand-gray hover:text-brand-gold transition-colors duration-200 tracking-wide"
+                  className="text-sm text-brand-text-mid hover:text-brand-peach transition-colors duration-200 tracking-wide font-body"
                 >
                   {link.label}
                 </a>
@@ -52,14 +55,14 @@ export default function Navbar() {
               href={`${WHATSAPP_URL}?text=${encodeURIComponent('¡Hola! Me gustaría saber más sobre sus velas artesanales.')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex btn-gold text-sm py-2 px-4"
+              className="hidden sm:inline-flex btn-peach text-sm py-2 px-4"
             >
               <WhatsAppIcon className="w-4 h-4" />
               Escríbenos
             </a>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden p-2 text-brand-gray hover:text-brand-gold transition-colors"
+              className="md:hidden p-2 text-brand-green hover:text-brand-peach transition-colors"
               aria-label="Menú"
             >
               {menuOpen ? <CloseIcon className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
@@ -69,14 +72,14 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         {menuOpen && (
-          <div className="md:hidden border-t border-zinc-800 py-4 bg-brand-black/98">
+          <div className="md:hidden border-t border-brand-cream-dark py-4 bg-white/98">
             <ul className="flex flex-col gap-1">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className="block px-4 py-3 text-brand-gray hover:text-brand-gold hover:bg-zinc-900 transition-all rounded-lg"
+                    className="block px-4 py-3 text-brand-text-mid hover:text-brand-green hover:bg-brand-cream transition-all rounded-lg"
                   >
                     {link.label}
                   </a>
@@ -87,7 +90,7 @@ export default function Navbar() {
                   href={`${WHATSAPP_URL}?text=${encodeURIComponent('¡Hola! Me gustaría saber más sobre sus velas artesanales.')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-gold w-full justify-center text-sm"
+                  className="btn-peach w-full justify-center text-sm"
                 >
                   <WhatsAppIcon className="w-4 h-4" />
                   Escríbenos por WhatsApp
@@ -101,12 +104,10 @@ export default function Navbar() {
   )
 }
 
-function CandleIcon({ className }: { className?: string }) {
+function FlameIcon({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 2c0 0-1 2-1 4s1 2 1 2 1-2 1-4-1-2-1-2z" fill="currentColor" stroke="none" />
-      <rect x="8" y="8" width="8" height="14" rx="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M8 16h8" />
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2c0 0-6 5.686-6 10a6 6 0 0012 0c0-1.606-.481-3.048-1.2-4.2-.5.9-1.177 1.7-2.1 2.1C14.7 8.1 13.5 5.65 12 2z" />
     </svg>
   )
 }

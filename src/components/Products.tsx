@@ -28,17 +28,19 @@ export default function Products() {
     : PRODUCTS.filter((p) => p.category === activeCategory)
 
   return (
-    <section id="productos" className="py-20 md:py-28 bg-brand-black">
+    <section id="productos" className="py-20 md:py-28 bg-brand-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <Animate animation="fade-up">
           <div className="text-center mb-12">
-            <span className="text-brand-gold text-xs font-semibold tracking-widest uppercase mb-3 block">
-              Catálogo
-            </span>
+            <span className="section-label">Catálogo</span>
             <h2 className="section-heading">Nuestros Productos</h2>
-            <span className="gold-line" />
-            <p className="text-brand-gray mt-6 max-w-xl mx-auto">
+            <div className="floral-divider">
+              <svg className="w-5 h-5 text-brand-peach" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 008 20C19 20 22 3 22 3c-1 2-8 2-8 2 4-4 8.5-.5 8.5-.5C18 5 17 8 17 8z"/>
+              </svg>
+            </div>
+            <p className="text-brand-text-mid mt-5 max-w-xl mx-auto">
               Cada pieza es única, elaborada a mano con los mejores materiales y fragancias.
             </p>
           </div>
@@ -53,8 +55,8 @@ export default function Products() {
                 onClick={() => setActiveCategory(cat)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                   activeCategory === cat
-                    ? 'bg-brand-gold text-brand-black'
-                    : 'bg-zinc-900 text-brand-gray border border-zinc-800 hover:border-brand-gold/40 hover:text-brand-gold'
+                    ? 'bg-brand-peach text-white shadow-md shadow-brand-peach/30'
+                    : 'bg-white text-brand-text-mid border border-brand-cream-dark hover:border-brand-peach/40 hover:text-brand-peach'
                 }`}
               >
                 {categoryLabels[cat]}
@@ -80,11 +82,11 @@ export default function Products() {
                 {/* Hover popup — variants gallery */}
                 {allImages.length > 1 && (
                   <div className="absolute bottom-[calc(100%+10px)] left-0 right-0 z-50 opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto">
-                    <div className="bg-zinc-950/95 backdrop-blur-md border border-brand-gold/25 rounded-2xl p-3.5 shadow-2xl shadow-black/70">
+                    <div className="bg-white/97 backdrop-blur-md border border-brand-peach/25 rounded-2xl p-3.5 shadow-2xl shadow-brand-green/20">
                       {/* Popup header */}
                       <div className="flex items-center gap-2 mb-3">
-                        <span className="w-1.5 h-1.5 rounded-full bg-brand-gold" />
-                        <p className="text-brand-gold text-[10px] font-semibold uppercase tracking-[0.15em]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-brand-peach" />
+                        <p className="text-brand-peach text-[10px] font-semibold uppercase tracking-[0.15em]">
                           Modelos disponibles
                         </p>
                       </div>
@@ -94,7 +96,7 @@ export default function Products() {
                           <button
                             key={i}
                             onClick={() => openLightbox(allImages, i, product.name)}
-                            className="relative aspect-square rounded-xl overflow-hidden ring-1 ring-zinc-700/60 hover:ring-brand-gold/60 hover:scale-105 transition-all duration-200 cursor-pointer"
+                            className="relative aspect-square rounded-xl overflow-hidden ring-1 ring-brand-cream-dark hover:ring-brand-peach/60 hover:scale-105 transition-all duration-200 cursor-pointer"
                           >
                             {isVideo(src) ? (
                               <video
@@ -118,16 +120,16 @@ export default function Products() {
                     </div>
                     {/* Arrow pointing down */}
                     <div className="flex justify-center -mt-px overflow-hidden h-2">
-                      <div className="w-3 h-3 bg-zinc-950/95 border-r border-b border-brand-gold/25 rotate-45 -translate-y-1.5" />
+                      <div className="w-3 h-3 bg-white border-r border-b border-brand-peach/25 rotate-45 -translate-y-1.5" />
                     </div>
                   </div>
                 )}
 
                 {/* Product card */}
-                <div className="card-dark relative flex flex-col h-full">
+                <div className="card-cream relative flex flex-col h-full">
                   {/* Featured Badge */}
                   {product.isFeatured && (
-                    <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 bg-brand-gold text-brand-black text-xs font-bold px-3 py-1 rounded-full">
+                    <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 bg-brand-peach text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
                       <StarIcon className="w-3 h-3" />
                       Producto Estrella
                     </div>
@@ -135,14 +137,14 @@ export default function Products() {
 
                   {/* Models indicator */}
                   {allImages.length > 1 && (
-                    <div className="absolute top-4 right-4 z-10 flex items-center gap-1 bg-zinc-900/80 backdrop-blur-sm border border-brand-gold/30 text-brand-gold text-[10px] font-semibold px-2 py-1 rounded-full">
+                    <div className="absolute top-4 right-4 z-10 flex items-center gap-1 bg-white/90 backdrop-blur-sm border border-brand-peach/30 text-brand-peach text-[10px] font-semibold px-2 py-1 rounded-full">
                       <ImagesIcon className="w-3 h-3" />
                       {allImages.length} modelos
                     </div>
                   )}
 
                   {/* Product image */}
-                  <div className="relative h-52 bg-zinc-800 overflow-hidden">
+                  <div className="relative h-52 bg-brand-cream-dark overflow-hidden">
                     {mainImage ? (
                       <button
                         onClick={() => openLightbox(allImages, 0, product.name)}
@@ -159,27 +161,27 @@ export default function Products() {
                         <ProductPlaceholder category={product.category} />
                       </div>
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/60 to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-green/40 to-transparent pointer-events-none" />
                   </div>
 
                   {/* Content */}
                   <div className="p-5 flex flex-col flex-1">
                     <div className="mb-2">
-                      <span className="text-xs text-brand-gold/70 uppercase tracking-wider font-medium">
+                      <span className="text-xs text-brand-peach/80 uppercase tracking-wider font-medium">
                         {CATEGORY_LABELS[product.category]}
                       </span>
                     </div>
-                    <h3 className="font-heading font-semibold text-lg text-brand-white mb-2 group-hover:text-brand-gold transition-colors">
+                    <h3 className="font-heading font-semibold text-lg text-brand-green mb-2 group-hover:text-brand-peach transition-colors">
                       {product.name}
                     </h3>
-                    <p className="text-brand-gray text-sm leading-relaxed flex-1 mb-5">
+                    <p className="text-brand-text-mid text-sm leading-relaxed flex-1 mb-5">
                       {product.description}
                     </p>
                     <a
                       href={getWhatsAppProductUrl(product.name)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-gold w-full justify-center text-sm py-2.5"
+                      className="btn-peach w-full justify-center text-sm py-2.5"
                     >
                       <WhatsAppIcon className="w-4 h-4" />
                       Consultar precio
@@ -194,8 +196,8 @@ export default function Products() {
         {/* Bottom CTA */}
         <Animate animation="fade-up">
           <div className="mt-14 text-center">
-            <p className="text-brand-gray mb-4">¿No encuentras lo que buscas?</p>
-            <a href="#contacto" className="btn-outline-gold inline-flex">
+            <p className="text-brand-text-mid mb-4">¿No encuentras lo que buscas?</p>
+            <a href="#contacto" className="btn-outline-green inline-flex">
               Pide tu diseño personalizado
             </a>
           </div>
@@ -218,10 +220,10 @@ export default function Products() {
 
 function ProductPlaceholder({ category }: { category: ProductCategory }) {
   const icons: Record<ProductCategory, React.ReactNode> = {
-    floral: <FloralIcon className="w-20 h-20 text-brand-gold/30" />,
-    special: <CandleIcon className="w-20 h-20 text-brand-gold/30" />,
-    arrangements: <GiftIcon className="w-20 h-20 text-brand-gold/30" />,
-    premium: <BoxIcon className="w-20 h-20 text-brand-gold/30" />,
+    floral: <FloralIcon className="w-20 h-20 text-brand-peach/30" />,
+    special: <CandleIcon className="w-20 h-20 text-brand-peach/30" />,
+    arrangements: <GiftIcon className="w-20 h-20 text-brand-peach/30" />,
+    premium: <BoxIcon className="w-20 h-20 text-brand-peach/30" />,
   }
   return <>{icons[category]}</>
 }

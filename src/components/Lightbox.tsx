@@ -85,7 +85,7 @@ export default function Lightbox({ images, index, productName, onClose, onNaviga
       <button
         onClick={(e) => { e.stopPropagation(); onClose() }}
         aria-label="Cerrar"
-        className="absolute top-5 right-5 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-zinc-900/80 border border-zinc-700 text-zinc-400 hover:text-brand-gold hover:border-brand-gold/50 transition-all duration-200"
+        className="absolute top-5 right-5 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-zinc-900/80 border border-zinc-700 text-zinc-400 hover:text-brand-peach hover:border-brand-peach/50 transition-all duration-200"
       >
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -94,7 +94,7 @@ export default function Lightbox({ images, index, productName, onClose, onNaviga
 
       {/* Counter — z-20 */}
       <div className="absolute top-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 bg-zinc-900/70 border border-zinc-800 rounded-full px-4 py-1.5 pointer-events-none">
-        <span className="text-brand-gold text-xs font-semibold">{index + 1}</span>
+        <span className="text-brand-peach text-xs font-semibold">{index + 1}</span>
         <span className="text-zinc-600 text-xs">/</span>
         <span className="text-zinc-400 text-xs">{images.length}</span>
       </div>
@@ -104,7 +104,7 @@ export default function Lightbox({ images, index, productName, onClose, onNaviga
         <button
           onClick={(e) => { e.stopPropagation(); prev() }}
           aria-label="Anterior"
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-zinc-900/80 border border-zinc-700 text-zinc-300 hover:text-brand-gold hover:border-brand-gold/50 hover:bg-zinc-900 transition-all duration-200"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-zinc-900/80 border border-zinc-700 text-zinc-300 hover:text-brand-peach hover:border-brand-peach/50 hover:bg-zinc-900 transition-all duration-200"
         >
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -117,7 +117,7 @@ export default function Lightbox({ images, index, productName, onClose, onNaviga
         <button
           onClick={(e) => { e.stopPropagation(); next() }}
           aria-label="Siguiente"
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-zinc-900/80 border border-zinc-700 text-zinc-300 hover:text-brand-gold hover:border-brand-gold/50 hover:bg-zinc-900 transition-all duration-200"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-zinc-900/80 border border-zinc-700 text-zinc-300 hover:text-brand-peach hover:border-brand-peach/50 hover:bg-zinc-900 transition-all duration-200"
         >
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -137,7 +137,7 @@ export default function Lightbox({ images, index, productName, onClose, onNaviga
               onClick={() => onNavigate(i)}
               className={`relative w-12 h-12 rounded-lg overflow-hidden ring-2 transition-all duration-200 ${
                 i === index
-                  ? 'ring-brand-gold scale-110'
+                  ? 'ring-brand-peach scale-110'
                   : 'ring-zinc-700 opacity-50 hover:opacity-100 hover:ring-zinc-500'
               }`}
             >
@@ -174,7 +174,7 @@ export function PlayOverlay({ size = 'md' }: { size?: 'sm' | 'md' }) {
   const icon  = size === 'sm' ? 'w-2.5 h-2.5' : 'w-4 h-4'
   return (
     <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-      <div className={`${outer} rounded-full bg-brand-gold/90 flex items-center justify-center shadow-lg`}>
+      <div className={`${outer} rounded-full bg-brand-peach/90 flex items-center justify-center shadow-lg`}>
         <svg className={`${icon} text-brand-black ml-0.5`} viewBox="0 0 24 24" fill="currentColor">
           <path d="M8 5v14l11-7z" />
         </svg>

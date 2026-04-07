@@ -2,38 +2,39 @@ import Animate from '@/components/Animate'
 
 export default function About() {
   return (
-    <section id="nosotros" className="py-20 md:py-28 bg-zinc-950">
+    <section id="nosotros" className="py-20 md:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Section Header */}
         <Animate animation="fade-up">
           <div className="text-center mb-16">
-            <span className="text-brand-gold text-xs font-semibold tracking-widest uppercase mb-3 block">
-              Nuestra historia
-            </span>
+            <span className="section-label">Nuestra historia</span>
             <h2 className="section-heading">¿Por qué elegirnos?</h2>
-            <span className="gold-line" />
+            <div className="floral-divider">
+              <FloralSprig />
+            </div>
           </div>
         </Animate>
 
-        {/* Main grid: text left, photo collage right */}
+        {/* Main grid */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
           {/* Text */}
           <Animate animation="fade-left">
             <div>
-              <p className="text-brand-gray text-lg leading-relaxed mb-6">
-                <span className="text-brand-gold font-semibold">Lumos by Paola</span> no vende solo
+              <p className="text-brand-text-dark text-lg leading-relaxed mb-6">
+                <span className="text-brand-peach font-semibold">Lumos by Paola</span> no vende solo
                 cera con olor — vende una experiencia estética y emocional que la competencia
                 difícilmente puede replicar.
               </p>
-              <p className="text-brand-gray leading-relaxed mb-6">
+              <p className="text-brand-text-mid leading-relaxed mb-6">
                 Cada vela es una pieza artesanal que tomó horas de diseño y selección de fragancias.
                 Puedes crear recordatorios específicos para una boda o un bautizo, adaptando los
                 aromas y colores al evento. La durabilidad y la intensidad del aroma son nuestras
                 mejores cartas de presentación.
               </p>
               <div className="flex items-center gap-3 mt-8">
-                <div className="h-px flex-1 bg-gradient-to-r from-brand-gold/40 to-transparent" />
-                <span className="text-brand-gold text-sm italic font-heading">
+                <div className="h-px flex-1 bg-brand-peach/30" />
+                <span className="text-brand-peach text-sm italic font-heading">
                   Elaboradas 100% a mano con amor
                 </span>
               </div>
@@ -43,77 +44,56 @@ export default function About() {
           {/* Photo Collage */}
           <Animate animation="fade-right">
             <div className="grid grid-cols-2 gap-3" style={{ gridTemplateRows: '220px 200px' }}>
-              {/* Large image — spans full width */}
-              <div className="col-span-2 rounded-2xl overflow-hidden">
-                <img
-                  src="/images/about/about-1.jpg"
-                  alt="Ramos de velas artesanales de girasoles"
-                  className="w-full h-full object-cover"
-                />
+              <div className="col-span-2 rounded-2xl overflow-hidden shadow-lg shadow-brand-green/10">
+                <img src="/images/about/about-1.jpg" alt="Ramos de velas artesanales de girasoles" className="w-full h-full object-cover" />
               </div>
-              {/* Two smaller images below */}
-              <div className="rounded-2xl overflow-hidden">
-                <img
-                  src="/images/about/about-2.jpg"
-                  alt="Vela Lupita en caja de regalo"
-                  className="w-full h-full object-cover"
-                />
+              <div className="rounded-2xl overflow-hidden shadow-md shadow-brand-green/10">
+                <img src="/images/about/about-2.jpg" alt="Vela Lupita en caja de regalo" className="w-full h-full object-cover" />
               </div>
-              <div className="rounded-2xl overflow-hidden">
-                <img
-                  src="/images/about/about-3.jpg"
-                  alt="Arreglo de velas rosas en cajas corazón"
-                  className="w-full h-full object-cover"
-                />
+              <div className="rounded-2xl overflow-hidden shadow-md shadow-brand-green/10">
+                <img src="/images/about/about-3.jpg" alt="Arreglo de velas rosas en cajas corazón" className="w-full h-full object-cover" />
               </div>
             </div>
           </Animate>
         </div>
 
-        {/* Feature Cards — full width row */}
+        {/* Feature Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16">
           {FEATURES.map((feature, idx) => (
             <Animate key={feature.title} animation="fade-up" delay={idx * 150}>
-              <div className="flex items-start gap-4 p-5 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-brand-gold/30 transition-colors group h-full">
-                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center group-hover:bg-brand-gold/20 transition-colors">
-                  <feature.Icon className="w-6 h-6 text-brand-gold" />
+              <div className="flex items-start gap-4 p-6 rounded-2xl bg-brand-cream border border-brand-cream-dark hover:border-brand-peach/40 hover:shadow-md hover:shadow-brand-peach/10 transition-all duration-300 group h-full">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-brand-peach/15 flex items-center justify-center group-hover:bg-brand-peach/25 transition-colors">
+                  <feature.Icon className="w-6 h-6 text-brand-peach" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-brand-white mb-1">{feature.title}</h3>
-                  <p className="text-brand-gray text-sm leading-relaxed">{feature.description}</p>
+                  <h3 className="font-heading font-semibold text-brand-green mb-1">{feature.title}</h3>
+                  <p className="text-brand-text-mid text-sm leading-relaxed">{feature.description}</p>
                 </div>
               </div>
             </Animate>
           ))}
         </div>
 
-        {/* Additional photos strip */}
+        {/* Photos strip */}
         <Animate animation="fade-up">
           <div className="flex gap-3 overflow-x-auto pb-2 mb-16 scrollbar-hide">
             {EXTRA_PHOTOS.map((photo) => (
-              <div
-                key={photo.src}
-                className="flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden"
-              >
-                <img
-                  src={photo.src}
-                  alt={photo.alt}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                />
+              <div key={photo.src} className="flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden shadow-sm shadow-brand-green/10">
+                <img src={photo.src} alt={photo.alt} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
               </div>
             ))}
           </div>
         </Animate>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-16 border-t border-zinc-800">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 border-t border-brand-cream-dark">
           {STATS.map((stat, idx) => (
             <Animate key={stat.label} animation="fade-up" delay={idx * 100}>
               <div className="text-center">
-                <div className="font-heading text-3xl md:text-4xl font-semibold text-gradient-gold mb-1">
+                <div className="font-heading text-3xl md:text-4xl font-semibold text-brand-peach mb-1">
                   {stat.value}
                 </div>
-                <div className="text-brand-gray text-sm">{stat.label}</div>
+                <div className="text-brand-text-mid text-sm">{stat.label}</div>
               </div>
             </Animate>
           ))}
@@ -123,23 +103,28 @@ export default function About() {
   )
 }
 
+function FloralSprig() {
+  return (
+    <svg className="w-5 h-5 text-brand-peach" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 008 20C19 20 22 3 22 3c-1 2-8 2-8 2 4-4 8.5-.5 8.5-.5C18 5 17 8 17 8z"/>
+    </svg>
+  )
+}
+
 const FEATURES = [
   {
     title: 'Diseño a medida',
-    description:
-      'Adaptamos aromas, colores y formas a tu evento o gusto personal. Cada pieza es única.',
+    description: 'Adaptamos aromas, colores y formas a tu evento o gusto personal. Cada pieza es única.',
     Icon: PaletteIcon,
   },
   {
     title: 'Aromas intensos y duraderos',
-    description:
-      'Seleccionamos las mejores fragancias para garantizar una experiencia sensorial duradera.',
+    description: 'Seleccionamos las mejores fragancias para garantizar una experiencia sensorial duradera.',
     Icon: SparklesIcon,
   },
   {
     title: 'Hechas 100% a mano',
-    description:
-      'Cada vela pasa por un proceso artesanal cuidadoso. No hay dos iguales — eso las hace especiales.',
+    description: 'Cada vela pasa por un proceso artesanal cuidadoso. No hay dos iguales — eso las hace especiales.',
     Icon: HandIcon,
   },
 ]
@@ -159,9 +144,9 @@ const EXTRA_PHOTOS = [
 
 const STATS = [
   { value: '100%', label: 'Artesanal' },
-  { value: '+50', label: 'Diseños únicos' },
-  { value: '4★+', label: 'Valoración clientes' },
-  { value: '∞', label: 'Personalización' },
+  { value: '+50',  label: 'Diseños únicos' },
+  { value: '4★+',  label: 'Valoración clientes' },
+  { value: '∞',    label: 'Personalización' },
 ]
 
 function PaletteIcon({ className }: { className?: string }) {

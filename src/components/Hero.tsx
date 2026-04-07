@@ -4,73 +4,77 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      style={{ backgroundColor: '#2D4A2D' }}
     >
-      {/* Background photo — usa CSS background-image; si no existe la imagen, el gradiente del section actúa de fallback */}
+      {/* Background photo */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('/images/hero/hero.jpg')" }}
         aria-hidden="true"
       />
 
-      {/* Dark overlay para legibilidad del texto */}
-      <div className="absolute inset-0 bg-gradient-to-b from-brand-black/75 via-brand-black/50 to-brand-black/80" />
+      {/* Warm botanical overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-brand-green/70 via-brand-green/40 to-brand-green/75" />
 
-      {/* Blur dorado decorativo */}
+      {/* Soft decorative glow */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-brand-gold/5 blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-brand-gold/4 blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-brand-gold/5" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-brand-gold/8" />
+        <div className="absolute top-1/3 left-1/4 w-80 h-80 rounded-full bg-brand-peach/10 blur-3xl" />
+        <div className="absolute bottom-1/3 right-1/4 w-96 h-96 rounded-full bg-brand-cream/8 blur-3xl" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto pt-20">
+
         {/* Badge */}
         <div
-          className="hero-anim inline-flex items-center gap-2 bg-brand-gold/10 border border-brand-gold/30 rounded-full px-4 py-2 mb-8"
+          className="hero-anim inline-flex items-center gap-2 bg-white/10 border border-white/25 rounded-full px-5 py-2 mb-8 backdrop-blur-sm"
           style={{ animationDelay: '0.1s' }}
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse" />
-          <span className="text-brand-gold text-xs font-semibold tracking-widest uppercase">
-            Velas Artesanales
+          <span className="w-1.5 h-1.5 rounded-full bg-brand-peach animate-pulse" />
+          <span className="text-brand-cream text-xs font-semibold tracking-widest uppercase">
+            Velas Artesanales • Ecuador
           </span>
         </div>
 
-        {/* Main heading */}
+        {/* Cursive title */}
         <h1
-          className="hero-anim font-heading font-semibold text-5xl md:text-7xl lg:text-8xl mb-4 leading-tight"
+          className="hero-anim font-cursive text-6xl md:text-8xl lg:text-9xl text-white mb-2 leading-none"
           style={{ animationDelay: '0.3s' }}
         >
-          <span className="text-gradient-gold">Lumos</span>
-          <br />
-          <span className="text-brand-white text-3xl md:text-4xl lg:text-5xl font-normal italic">
-            by Paola
-          </span>
+          Lumos
         </h1>
-
-        {/* Decorative line */}
-        <div
-          className="hero-anim flex items-center justify-center gap-4 my-6"
-          style={{ animationDelay: '0.5s' }}
+        <p
+          className="hero-anim font-heading italic text-brand-cream/90 text-xl md:text-2xl lg:text-3xl font-light mb-6"
+          style={{ animationDelay: '0.45s' }}
         >
-          <div className="h-px w-16 bg-gradient-to-r from-transparent to-brand-gold" />
-          <FlowerIcon className="w-5 h-5 text-brand-gold" />
-          <div className="h-px w-16 bg-gradient-to-l from-transparent to-brand-gold" />
+          by Paola
+        </p>
+
+        {/* Floral separator */}
+        <div
+          className="hero-anim flex items-center justify-center gap-4 mb-7"
+          style={{ animationDelay: '0.55s' }}
+        >
+          <div className="h-px w-16 bg-brand-peach/60" />
+          <svg className="w-6 h-6 text-brand-peach/80" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2a2 2 0 00-2 2c0 .74.4 1.38 1 1.72V7h-2a2 2 0 000 4h.28A2 2 0 008 13a2 2 0 002 2v.28A2 2 0 0012 17a2 2 0 002-1.72V13a2 2 0 002-2 2 2 0 00-2.28-1.98H14V5.72A2 2 0 0014 4a2 2 0 00-2-2z"/>
+          </svg>
+          <div className="h-px w-16 bg-brand-peach/60" />
         </div>
 
         {/* Slogan */}
         <p
-          className="hero-anim font-heading italic text-xl md:text-2xl lg:text-3xl text-brand-cream/90 mb-4"
-          style={{ animationDelay: '0.6s' }}
+          className="hero-anim font-heading italic text-xl md:text-2xl text-white/85 mb-4"
+          style={{ animationDelay: '0.65s' }}
         >
           &ldquo;Transforma tu espacio con un destello de aroma&rdquo;
         </p>
 
         {/* Description */}
         <p
-          className="hero-anim text-brand-gray text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
-          style={{ animationDelay: '0.75s' }}
+          className="hero-anim text-brand-cream/75 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
+          style={{ animationDelay: '0.78s' }}
         >
           Velas florales artesanales elaboradas 100% a mano. Diseños únicos y personalizados
           para eventos, regalos y momentos especiales.
@@ -81,18 +85,18 @@ export default function Hero() {
           className="hero-anim flex flex-col sm:flex-row gap-4 justify-center items-center"
           style={{ animationDelay: '0.9s' }}
         >
-          <a href="#productos" className="btn-gold text-base px-8 py-4 shadow-lg shadow-brand-gold/20">
-            <span>Ver Productos</span>
-            <ArrowDownIcon className="w-4 h-4" />
+          <a href="#productos" className="btn-peach text-base px-8 py-4 shadow-lg shadow-brand-peach/30">
+            <LeafIcon className="w-4 h-4" />
+            Ver Catálogo
           </a>
           <a
             href={`${WHATSAPP_URL}?text=${encodeURIComponent('¡Hola! Me gustaría saber más sobre sus velas artesanales.')}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-outline-gold text-base px-8 py-4"
+            className="inline-flex items-center gap-2 border-2 border-white/60 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:bg-white/10 hover:border-white active:scale-95 text-base"
           >
             <WhatsAppIcon className="w-4 h-4" />
-            <span>Contactar por WhatsApp</span>
+            Contactar por WhatsApp
           </a>
         </div>
 
@@ -101,7 +105,7 @@ export default function Hero() {
           className="hero-anim mt-16 flex justify-center animate-bounce"
           style={{ animationDelay: '1.1s' }}
         >
-          <a href="#nosotros" className="text-brand-gold/50 hover:text-brand-gold transition-colors">
+          <a href="#nosotros" className="text-white/40 hover:text-brand-peach transition-colors">
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
             </svg>
@@ -112,18 +116,10 @@ export default function Hero() {
   )
 }
 
-function FlowerIcon({ className }: { className?: string }) {
+function LeafIcon({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2C10.9 2 10 2.9 10 4c0 .74.4 1.38 1 1.72V7H9C7.9 7 7 7.9 7 9c0 .74.4 1.38 1 1.72V12H6.28C5.94 11.4 5.3 11 4.56 11 3.46 11 2.56 11.9 2.56 13s.9 2 2 2c.74 0 1.38-.4 1.72-1H8v2c0 1.1.9 2 2 2h2v1.28c-.6.34-1 .98-1 1.72 0 1.1.9 2 2 2s2-.9 2-2c0-.74-.4-1.38-1-1.72V19h2c1.1 0 2-.9 2-2v-2h1.72c.34.6.98 1 1.72 1 1.1 0 2-.9 2-2s-.9-2-2-2c-.74 0-1.38.4-1.72 1H16v-1.28c.6-.34 1-.98 1-1.72 0-1.1-.9-2-2-2h-2V8.72c.6-.34 1-.98 1-1.72 0-1.1-.9-2-2-2z" />
-    </svg>
-  )
-}
-
-function ArrowDownIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M6.115 5.19l.319 1.913A6 6 0 008.11 10.36L9.75 12l-.387.775c-.217.433-.132.956.21 1.298l1.348 1.348c.21.21.329.497.329.795v1.089c0 .426.24.815.622 1.006l.153.076c.433.217.956.132 1.298-.21l.723-.723a8.7 8.7 0 002.288-4.042 1.087 1.087 0 00-.358-1.099l-1.33-1.108c-.251-.21-.582-.299-.905-.245l-1.17.195a1.125 1.125 0 01-.98-.314l-.295-.295a1.125 1.125 0 010-1.591l.13-.132a1.125 1.125 0 011.3-.21l.603.302a.809.809 0 001.086-1.086L14.25 7.5l1.256-.837a4.5 4.5 0 001.528-1.732l.146-.292" />
     </svg>
   )
 }

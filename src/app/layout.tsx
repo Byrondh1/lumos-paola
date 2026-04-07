@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const viewport: Viewport = {
-  themeColor: '#0A0A0A',
+  themeColor: '#2D4A2D',
 }
 
 const SITE_URL = 'https://byrondh1.github.io/lumos-paola'
@@ -137,7 +137,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:wght@300;400;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@400;600;700&family=Lato:wght@300;400;700&display=swap"
           rel="stylesheet"
         />
         <script
@@ -145,7 +145,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-brand-black text-brand-white font-body antialiased">
+      <body className="bg-brand-cream text-brand-green font-body antialiased">
         {children}
       </body>
     </html>

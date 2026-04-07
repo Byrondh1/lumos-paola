@@ -2,102 +2,114 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@400;600;700&family=Lato:wght@300;400;700&display=swap');
 
 :root {
   --font-playfair: 'Playfair Display', Georgia, serif;
-  --font-lato: 'Lato', system-ui, sans-serif;
+  --font-dancing:  'Dancing Script', cursive;
+  --font-lato:     'Lato', system-ui, sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-lato);
-  background-color: #0A0A0A;
-  color: #FFFFFF;
+  background-color: #F5EDD8;
+  color: #2D4A2D;
   overflow-x: hidden;
 }
 
 @layer components {
+
+  /* ── Typography ─────────────────────────────── */
+  .section-label {
+    @apply font-cursive text-2xl text-brand-peach block text-center mb-1;
+  }
+
   .section-heading {
-    @apply font-heading text-3xl md:text-4xl lg:text-5xl font-semibold text-brand-white text-center;
+    @apply font-heading text-3xl md:text-4xl lg:text-5xl font-semibold text-brand-green text-center;
   }
 
-  .gold-line {
-    @apply block w-16 h-0.5 bg-brand-gold mx-auto mt-3;
+  /* Decorative divider line with tiny leaf */
+  .floral-divider {
+    @apply flex items-center justify-center gap-3 mt-4 mb-2;
+  }
+  .floral-divider::before,
+  .floral-divider::after {
+    content: '';
+    @apply block h-px w-16 bg-brand-peach/50;
   }
 
-  .btn-gold {
-    @apply inline-flex items-center gap-2 bg-brand-gold text-brand-black font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:bg-brand-gold-light hover:shadow-lg hover:shadow-brand-gold/30 active:scale-95;
+  /* ── Buttons ────────────────────────────────── */
+  .btn-peach {
+    @apply inline-flex items-center gap-2 bg-brand-peach text-white font-semibold px-6 py-3 rounded-full
+           transition-all duration-300 hover:bg-brand-peach-light hover:shadow-lg hover:shadow-brand-peach/30 active:scale-95;
   }
 
-  .btn-outline-gold {
-    @apply inline-flex items-center gap-2 border border-brand-gold text-brand-gold font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:bg-brand-gold hover:text-brand-black active:scale-95;
+  .btn-outline-green {
+    @apply inline-flex items-center gap-2 border-2 border-brand-green text-brand-green font-semibold px-6 py-3 rounded-full
+           transition-all duration-300 hover:bg-brand-green hover:text-white active:scale-95;
   }
 
-  .card-dark {
-    @apply bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden transition-all duration-300 hover:border-brand-gold/40 hover:shadow-xl hover:shadow-brand-gold/10;
+  .btn-outline-peach {
+    @apply inline-flex items-center gap-2 border-2 border-brand-peach text-brand-peach font-semibold px-6 py-3 rounded-full
+           transition-all duration-300 hover:bg-brand-peach hover:text-white active:scale-95;
+  }
+
+  /* ── Cards ──────────────────────────────────── */
+  .card-cream {
+    @apply bg-white border border-brand-cream-dark rounded-2xl overflow-hidden
+           transition-all duration-300 hover:shadow-xl hover:shadow-brand-green/10 hover:-translate-y-1;
+  }
+
+  /* ── Form ───────────────────────────────────── */
+  .input-field {
+    @apply w-full bg-white border border-brand-cream-dark rounded-xl px-4 py-3
+           text-brand-text-dark placeholder-brand-text-light focus:outline-none
+           focus:border-brand-peach focus:ring-2 focus:ring-brand-peach/20 transition-all;
   }
 }
 
 @layer utilities {
-  .text-gradient-gold {
-    @apply bg-gradient-to-r from-brand-gold-light via-brand-gold to-brand-gold-dark bg-clip-text text-transparent;
-  }
-
-  .bg-gradient-hero {
-    background: linear-gradient(135deg, #0A0A0A 0%, #1a1008 50%, #0A0A0A 100%);
-  }
-
-  .bg-gradient-gold-subtle {
-    background: linear-gradient(180deg, rgba(201, 168, 76, 0.08) 0%, transparent 100%);
+  .text-gradient-green {
+    @apply bg-gradient-to-r from-brand-green to-brand-green-light bg-clip-text text-transparent;
   }
 }
 
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #0A0A0A;
-}
-::-webkit-scrollbar-thumb {
-  background: #C9A84C;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #E2C97A;
-}
+/* ── Scrollbar ───────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track  { background: #F5EDD8; }
+::-webkit-scrollbar-thumb  { background: #E8956D; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #D07050; }
 
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hero entrance animation */
+/* ── Entrance animations ─────────────────────── */
 @keyframes heroFadeUp {
   from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-
-.hero-anim {
-  animation: heroFadeUp 0.8s ease both;
-}
+.hero-anim { animation: heroFadeUp 0.8s ease both; }
 
 @keyframes lbIn {
   from { opacity: 0; transform: scale(0.94); }
   to   { opacity: 1; transform: scale(1); }
 }
-
-.animate-lb-in {
-  animation: lbIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
+.animate-lb-in { animation: lbIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) both; }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-anim { animation: none; }
 }
+
+/* ── Floral corner decoration (reusable class) ── */
+.floral-corner {
+  position: relative;
+}
+.floral-corner::before,
+.floral-corner::after {
+  content: '❧';
+  position: absolute;
+  font-size: 1.5rem;
+  color: #E8956D;
+  opacity: 0.35;
+}
+.floral-corner::before { top: 1rem;  left:  1.25rem; }
+.floral-corner::after  { bottom: 1rem; right: 1.25rem; transform: rotate(180deg); }

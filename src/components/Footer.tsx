@@ -2,30 +2,33 @@ import { NAV_LINKS, SOCIAL, EMAIL, WHATSAPP_URL } from '@/lib/constants'
 
 export default function Footer() {
   return (
-    <footer className="bg-zinc-950 border-t border-zinc-900">
+    <footer className="bg-brand-green border-t border-brand-green-light/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <CandleIcon className="w-7 h-7 text-brand-gold" />
-              <span className="font-heading font-semibold text-lg">
-                <span className="text-gradient-gold">Lumos</span>
-                <span className="text-brand-white"> By Paola</span>
+              <FlameIcon className="w-6 h-6 text-brand-peach" />
+              <span className="font-cursive text-2xl text-white leading-none">
+                Lumos
+                <span className="font-heading font-normal text-base ml-1 text-brand-cream/70 not-italic">
+                  by Paola
+                </span>
               </span>
             </div>
-            <p className="text-brand-gray text-sm leading-relaxed mb-5">
+            <p className="text-brand-cream/55 text-sm leading-relaxed mb-5">
               Velas aromáticas artesanales elaboradas 100% a mano. Diseños únicos para
               momentos únicos.
             </p>
-            <p className="font-heading italic text-brand-gold/60 text-sm">
+            <p className="font-heading italic text-brand-peach/50 text-sm">
               &ldquo;Transforma tu espacio con un destello de aroma&rdquo;
             </p>
           </div>
 
           {/* Navigation */}
           <div>
-            <h4 className="font-semibold text-brand-white mb-4 text-sm uppercase tracking-wider">
+            <h4 className="font-semibold text-brand-cream/80 mb-4 text-xs uppercase tracking-wider">
               Navegación
             </h4>
             <ul className="space-y-2">
@@ -33,7 +36,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-brand-gray text-sm hover:text-brand-gold transition-colors"
+                    className="text-brand-cream/50 text-sm hover:text-brand-peach transition-colors"
                   >
                     {link.label}
                   </a>
@@ -44,7 +47,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-semibold text-brand-white mb-4 text-sm uppercase tracking-wider">
+            <h4 className="font-semibold text-brand-cream/80 mb-4 text-xs uppercase tracking-wider">
               Contacto
             </h4>
             <div className="space-y-3">
@@ -52,48 +55,36 @@ export default function Footer() {
                 href={`${WHATSAPP_URL}?text=${encodeURIComponent('¡Hola! Me gustaría saber más sobre sus velas artesanales.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-brand-gray text-sm hover:text-brand-gold transition-colors"
+                className="flex items-center gap-2 text-brand-cream/50 text-sm hover:text-brand-peach transition-colors"
               >
                 <WhatsAppIcon className="w-4 h-4 text-green-400" />
                 +593 96 292 7911
               </a>
               <a
                 href={`mailto:${EMAIL}`}
-                className="flex items-center gap-2 text-brand-gray text-sm hover:text-brand-gold transition-colors"
+                className="flex items-center gap-2 text-brand-cream/50 text-sm hover:text-brand-peach transition-colors"
               >
                 <EmailIcon className="w-4 h-4" />
                 {EMAIL}
               </a>
-              <p className="flex items-center gap-2 text-brand-gray text-sm">
-                <ClockIcon className="w-4 h-4 text-brand-gold" />
+              <p className="flex items-center gap-2 text-brand-cream/50 text-sm">
+                <ClockIcon className="w-4 h-4 text-brand-peach/60" />
                 Siempre disponibles
               </p>
             </div>
 
             {/* Social icons */}
             <div className="flex gap-3 mt-5">
-              <a
-                href={SOCIAL.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-brand-gold/20 hover:text-brand-gold text-brand-gray transition-all"
-              >
+              <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-white/8 flex items-center justify-center hover:bg-brand-peach/20 hover:text-brand-peach text-brand-cream/50 transition-all">
                 <InstagramIcon className="w-4 h-4" />
               </a>
-              <a
-                href={SOCIAL.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-brand-gold/20 hover:text-brand-gold text-brand-gray transition-all"
-              >
+              <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-white/8 flex items-center justify-center hover:bg-brand-peach/20 hover:text-brand-peach text-brand-cream/50 transition-all">
                 <FacebookIcon className="w-4 h-4" />
               </a>
-              <a
-                href={SOCIAL.tiktok}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-brand-gold/20 hover:text-brand-gold text-brand-gray transition-all"
-              >
+              <a href={SOCIAL.tiktok} target="_blank" rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-white/8 flex items-center justify-center hover:bg-brand-peach/20 hover:text-brand-peach text-brand-cream/50 transition-all">
                 <TikTokIcon className="w-4 h-4" />
               </a>
             </div>
@@ -101,12 +92,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-brand-gray text-xs">
+        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-brand-cream/35 text-xs">
             © {new Date().getFullYear()} Lumos By Paola. Todos los derechos reservados.
           </p>
-          <p className="text-brand-gray/50 text-xs">
-            Hecho con ✦ artesanía y código
+          <p className="text-brand-cream/25 text-xs font-cursive text-lg">
+            hecho con amor ❧
           </p>
         </div>
       </div>
@@ -114,15 +105,13 @@ export default function Footer() {
   )
 }
 
-function CandleIcon({ className }: { className?: string }) {
+function FlameIcon({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <path strokeLinecap="round" d="M12 3c0 0-1 2-1 4s1 2 1 2 1-2 1-4-1-2-1-2z" fill="currentColor" stroke="none" />
-      <rect x="8" y="8" width="8" height="14" rx="2" strokeLinecap="round" strokeLinejoin="round" />
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2c0 0-6 5.686-6 10a6 6 0 0012 0c0-1.606-.481-3.048-1.2-4.2-.5.9-1.177 1.7-2.1 2.1C14.7 8.1 13.5 5.65 12 2z" />
     </svg>
   )
 }
-
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -130,7 +119,6 @@ function WhatsAppIcon({ className }: { className?: string }) {
     </svg>
   )
 }
-
 function EmailIcon({ className }: { className?: string }) {
   return (
     <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -138,7 +126,6 @@ function EmailIcon({ className }: { className?: string }) {
     </svg>
   )
 }
-
 function ClockIcon({ className }: { className?: string }) {
   return (
     <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -146,7 +133,6 @@ function ClockIcon({ className }: { className?: string }) {
     </svg>
   )
 }
-
 function InstagramIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -154,7 +140,6 @@ function InstagramIcon({ className }: { className?: string }) {
     </svg>
   )
 }
-
 function FacebookIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -162,7 +147,6 @@ function FacebookIcon({ className }: { className?: string }) {
     </svg>
   )
 }
-
 function TikTokIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">

@@ -7,19 +7,29 @@ export default function Contact() {
   )
 
   return (
-    <section id="contacto" className="py-20 md:py-28 bg-zinc-950">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section id="contacto" className="py-20 md:py-28 bg-brand-green relative overflow-hidden">
+      {/* Botanical decorative blurs */}
+      <div className="absolute top-0 left-0 w-64 h-64 rounded-full bg-brand-peach/10 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-brand-cream/5 blur-3xl pointer-events-none" />
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         {/* Header */}
         <Animate animation="fade-up">
-          <span className="text-brand-gold text-xs font-semibold tracking-widest uppercase mb-3 block">
-            Contacto
-          </span>
-          <h2 className="section-heading mb-4">¿Tienes algo en mente?</h2>
-          <span className="gold-line" />
-          <p className="text-brand-gray text-lg mt-8 mb-3">
+          <span className="font-cursive text-2xl text-brand-peach block mb-1">Contacto</span>
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-semibold text-white text-center mb-4">
+            ¿Tienes algo en mente?
+          </h2>
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <div className="h-px w-16 bg-brand-peach/40" />
+            <svg className="w-5 h-5 text-brand-peach/70" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 008 20C19 20 22 3 22 3c-1 2-8 2-8 2 4-4 8.5-.5 8.5-.5C18 5 17 8 17 8z"/>
+            </svg>
+            <div className="h-px w-16 bg-brand-peach/40" />
+          </div>
+          <p className="text-brand-cream/70 text-lg mb-3">
             Diseñamos la vela perfecta para ti.
           </p>
-          <p className="text-brand-white font-heading italic text-2xl mb-10">
+          <p className="font-heading italic text-2xl text-white/90 mb-10">
             ¡Escríbenos y hagámoslo realidad!
           </p>
         </Animate>
@@ -30,64 +40,49 @@ export default function Contact() {
             href={`${WHATSAPP_URL}?text=${whatsappMessage}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-[#25D366] text-white font-bold text-lg px-8 py-4 rounded-full hover:bg-[#20bd5a] transition-all duration-300 shadow-xl shadow-[#25D366]/20 hover:shadow-[#25D366]/30 hover:scale-105 active:scale-100 mb-12"
+            className="inline-flex items-center gap-3 bg-[#25D366] text-white font-bold text-lg px-8 py-4 rounded-full hover:bg-[#20bd5a] transition-all duration-300 shadow-xl shadow-black/20 hover:scale-105 active:scale-100 mb-8"
           >
             <WhatsAppIcon className="w-6 h-6" />
             Escríbenos por WhatsApp
           </a>
 
-          {/* Availability badge */}
           <div className="flex items-center justify-center gap-2 mb-12">
             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            <span className="text-brand-gray text-sm">Siempre disponibles para atenderte</span>
-            <span className="text-brand-gold">✦</span>
+            <span className="text-brand-cream/60 text-sm">Siempre disponibles para atenderte</span>
+            <span className="text-brand-peach">✦</span>
           </div>
         </Animate>
 
         {/* Divider */}
         <Animate animation="fade-in" delay={250}>
-          <div className="flex items-center gap-4 mb-12">
-            <div className="flex-1 h-px bg-zinc-800" />
-            <span className="text-brand-gold text-xs uppercase tracking-widest">También puedes encontrarnos en</span>
-            <div className="flex-1 h-px bg-zinc-800" />
+          <div className="flex items-center gap-4 mb-10">
+            <div className="flex-1 h-px bg-white/15" />
+            <span className="text-brand-cream/40 text-xs uppercase tracking-widest">También puedes encontrarnos en</span>
+            <div className="flex-1 h-px bg-white/15" />
           </div>
         </Animate>
 
         {/* Social links */}
         <Animate animation="fade-up" delay={350}>
-          <div className="flex justify-center gap-4 flex-wrap mb-12">
-            <a
-              href={SOCIAL.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-brand-gold/40 hover:text-brand-gold text-brand-gray transition-all text-sm group"
-            >
+          <div className="flex justify-center gap-4 flex-wrap">
+            <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-white/8 border border-white/15 hover:border-brand-peach/50 hover:bg-white/15 text-brand-cream/70 hover:text-white transition-all text-sm group">
               <InstagramIcon className="w-5 h-5 group-hover:text-pink-400 transition-colors" />
               <span>@lumos.by.paola</span>
             </a>
-            <a
-              href={SOCIAL.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-brand-gold/40 hover:text-brand-gold text-brand-gray transition-all text-sm group"
-            >
+            <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-white/8 border border-white/15 hover:border-brand-peach/50 hover:bg-white/15 text-brand-cream/70 hover:text-white transition-all text-sm group">
               <FacebookIcon className="w-5 h-5 group-hover:text-blue-400 transition-colors" />
               <span>Lumos By Paola</span>
             </a>
-            <a
-              href={SOCIAL.tiktok}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-brand-gold/40 hover:text-brand-gold text-brand-gray transition-all text-sm group"
-            >
+            <a href={SOCIAL.tiktok} target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-white/8 border border-white/15 hover:border-brand-peach/50 hover:bg-white/15 text-brand-cream/70 hover:text-white transition-all text-sm group">
               <TikTokIcon className="w-5 h-5 group-hover:text-white transition-colors" />
               <span>@lumos.by.paola</span>
             </a>
-            <a
-              href={`mailto:${EMAIL}`}
-              className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-brand-gold/40 hover:text-brand-gold text-brand-gray transition-all text-sm group"
-            >
-              <EmailIcon className="w-5 h-5 group-hover:text-brand-gold transition-colors" />
+            <a href={`mailto:${EMAIL}`}
+              className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-white/8 border border-white/15 hover:border-brand-peach/50 hover:bg-white/15 text-brand-cream/70 hover:text-white transition-all text-sm group">
+              <EmailIcon className="w-5 h-5 group-hover:text-brand-peach transition-colors" />
               <span>{EMAIL}</span>
             </a>
           </div>
@@ -104,7 +99,6 @@ function WhatsAppIcon({ className }: { className?: string }) {
     </svg>
   )
 }
-
 function InstagramIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -112,7 +106,6 @@ function InstagramIcon({ className }: { className?: string }) {
     </svg>
   )
 }
-
 function FacebookIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -120,7 +113,6 @@ function FacebookIcon({ className }: { className?: string }) {
     </svg>
   )
 }
-
 function TikTokIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -128,7 +120,6 @@ function TikTokIcon({ className }: { className?: string }) {
     </svg>
   )
 }
-
 function EmailIcon({ className }: { className?: string }) {
   return (
     <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
