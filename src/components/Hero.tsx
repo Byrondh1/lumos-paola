@@ -10,7 +10,7 @@ export default function Hero() {
       {/* Background photo */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/hero/hero.jpg')" }}
+        style={{ backgroundImage: `url('${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/images/hero/hero.jpg')` }}
         aria-hidden="true"
       />
 

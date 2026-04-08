@@ -3,18 +3,14 @@
 import { useState } from 'react'
 import { SOCIAL } from '@/lib/constants'
 import Animate from '@/components/Animate'
+import { GALLERY_IMAGES } from '@/data/site-images'
 
-const GALLERY_ITEMS = [
-  { id: 1, label: 'Velas de Rosas',        category: 'Florales',    image: '/images/gallery/gallery-1.jpg' },
-  { id: 2, label: 'La Lupita',             category: 'Religiosas',  image: '/images/gallery/gallery-2.jpg' },
-  { id: 3, label: 'Arreglo Floral',        category: 'Arreglos',    image: '/images/gallery/gallery-3.jpg' },
-  { id: 4, label: 'Velas de Peonías',      category: 'Florales',    image: '/images/gallery/gallery-4.jpg' },
-  { id: 5, label: 'Caja Premium',          category: 'Premium',     image: '/images/gallery/gallery-5.jpg' },
-  { id: 6, label: 'Velas de Girasoles',    category: 'Florales',    image: '/images/gallery/gallery-6.jpg' },
-  { id: 7, label: 'Canasta de Regalo',     category: 'Arreglos',    image: '/images/gallery/gallery-7.jpg' },
-  { id: 8, label: 'Recordatorio de Boda',  category: 'Especiales',  image: '/images/gallery/gallery-8.jpg' },
-  { id: 9, label: 'Caja I ❤️ U',          category: 'Premium',     image: '/images/gallery/gallery-9.jpg' },
-]
+function fileLabel(src: string): string {
+  return (src.split('/').pop() ?? '')
+    .replace(/\.[^.]+$/, '')
+    .replace(/[-_]+/g, ' ')
+    .replace(/\b\w/g, (c) => c.toUpperCase())
+}
 
 export default function Gallery() {
   const [lightbox, setLightbox] = useState<number | null>(null)
@@ -38,29 +34,25 @@ export default function Gallery() {
           </div>
         </Animate>
 
-        {/* Grid */}
+        {/* Grid — auto-fills from public/images/gallery/ */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-          {GALLERY_ITEMS.map((item, idx) => (
-            <Animate key={item.id} animation="fade-in" delay={idx * 80} className={idx === 0 || idx === 4 ? 'row-span-2' : ''}>
+          {GALLERY_IMAGES.map((src, idx) => (
+            <Animate key={src} animation="fade-in" delay={idx * 80} className={idx === 0 || idx === 4 ? 'row-span-2' : ''}>
               <button
                 onClick={() => setLightbox(idx)}
                 className="relative overflow-hidden rounded-2xl bg-brand-cream-dark border border-brand-cream-dark hover:border-brand-peach/40 hover:shadow-lg hover:shadow-brand-green/10 transition-all duration-300 group cursor-pointer w-full h-full"
                 style={{ minHeight: idx === 0 || idx === 4 ? '400px' : '180px' }}
               >
                 <img
-                  src={item.image}
-                  alt={item.label}
+                  src={src}
+                  alt={fileLabel(src)}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                {/* Warm botanical overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-green/70 via-brand-green/10 to-transparent" />
 
                 {/* Label */}
                 <div className="absolute bottom-0 left-0 right-0 p-4 text-left">
-                  <span className="text-xs font-semibold uppercase tracking-widest text-brand-peach block mb-0.5">
-                    {item.category}
-                  </span>
-                  <span className="text-white text-sm font-medium font-heading">{item.label}</span>
+                  <span className="text-white text-sm font-medium font-heading">{fileLabel(src)}</span>
                 </div>
 
                 {/* Zoom icon */}
@@ -130,16 +122,13 @@ export default function Gallery() {
           </button>
           <div className="max-w-2xl w-full" onClick={(e) => e.stopPropagation()}>
             <img
-              src={GALLERY_ITEMS[lightbox].image}
-              alt={GALLERY_ITEMS[lightbox].label}
+              src={GALLERY_IMAGES[lightbox]}
+              alt={fileLabel(GALLERY_IMAGES[lightbox])}
               className="w-full max-h-[75vh] object-contain rounded-2xl shadow-2xl"
             />
             <div className="mt-4 text-center">
-              <span className="text-brand-peach text-xs font-semibold uppercase tracking-widest block">
-                {GALLERY_ITEMS[lightbox].category}
-              </span>
               <h3 className="font-heading text-xl text-white mt-1">
-                {GALLERY_ITEMS[lightbox].label}
+                {fileLabel(GALLERY_IMAGES[lightbox])}
               </h3>
             </div>
           </div>
