@@ -2,89 +2,89 @@
 // Re-generated on every "npm run build" and "npm run dev"
 
 export const ABOUT_IMAGES: string[] = [
-  "/images/about/about-1.jpg",
-  "/images/about/about-2.jpg",
-  "/images/about/about-3.jpg",
-  "/images/about/about-4.jpg",
-  "/images/about/about-5.jpg",
-  "/images/about/about-6.jpg",
-  "/images/about/about-7.jpg",
-  "/images/about/about-8.jpg",
-  "/images/about/about-9.jpg",
-  "/images/about/about-10.jpg",
-  "/images/about/about-11.jpg",
-  "/images/about/about-12.jpg",
-  "/images/about/about-13.jpg"
+  "/lumos-paola/images/about/about-1.jpg",
+  "/lumos-paola/images/about/about-2.jpg",
+  "/lumos-paola/images/about/about-3.jpg",
+  "/lumos-paola/images/about/about-4.jpg",
+  "/lumos-paola/images/about/about-5.jpg",
+  "/lumos-paola/images/about/about-6.jpg",
+  "/lumos-paola/images/about/about-7.jpg",
+  "/lumos-paola/images/about/about-8.jpg",
+  "/lumos-paola/images/about/about-9.jpg",
+  "/lumos-paola/images/about/about-10.jpg",
+  "/lumos-paola/images/about/about-11.jpg",
+  "/lumos-paola/images/about/about-12.jpg",
+  "/lumos-paola/images/about/about-13.jpg"
 ]
 
 export const GALLERY_IMAGES: string[] = [
-  "/images/gallery/galleri1.jpg",
-  "/images/gallery/galleri2.jpg",
-  "/images/gallery/galleri3.jpg"
+  "/lumos-paola/images/gallery/galleri1.jpg",
+  "/lumos-paola/images/gallery/galleri2.jpg",
+  "/lumos-paola/images/gallery/galleri3.jpg"
 ]
 
 export const PRODUCT_IMAGES: Record<string, string[]> = {
   "arreglo-14": [
-    "/images/products/arreglo-14/arreglo-14.jpg"
+    "/lumos-paola/images/products/arreglo-14/arreglo-14.jpg"
   ],
   "arreglo-20": [
-    "/images/products/arreglo-20/arreglo-20.jpg"
+    "/lumos-paola/images/products/arreglo-20/arreglo-20.jpg"
   ],
   "caja-love": [
-    "/images/products/caja-love/caja-love.jpg"
+    "/lumos-paola/images/products/caja-love/caja-love.jpg"
   ],
   "caja-mom": [
-    "/images/products/caja-mom/mom.jpg"
+    "/lumos-paola/images/products/caja-mom/mom.jpg"
   ],
   "caja-personalizada": [
-    "/images/products/caja-personalizada/caja-personalizada.jpg",
-    "/images/products/caja-personalizada/personalizado1.jpg"
+    "/lumos-paola/images/products/caja-personalizada/caja-personalizada.jpg",
+    "/lumos-paola/images/products/caja-personalizada/personalizado1.jpg"
   ],
   "canasta": [
-    "/images/products/canasta/canasta1.jpg",
-    "/images/products/canasta/canasta2.jpg"
+    "/lumos-paola/images/products/canasta/canasta1.jpg",
+    "/lumos-paola/images/products/canasta/canasta2.jpg"
   ],
   "girasoles": [
-    "/images/products/girasoles/girasoles1.jpg",
-    "/images/products/girasoles/girasoles2.jpg",
-    "/images/products/girasoles/girasoles3.jpg",
-    "/images/products/girasoles/girasoles4.jpg",
-    "/images/products/girasoles/girasoles5.jpg"
+    "/lumos-paola/images/products/girasoles/girasoles1.jpg",
+    "/lumos-paola/images/products/girasoles/girasoles2.jpg",
+    "/lumos-paola/images/products/girasoles/girasoles3.jpg",
+    "/lumos-paola/images/products/girasoles/girasoles4.jpg",
+    "/lumos-paola/images/products/girasoles/girasoles5.jpg"
   ],
   "lupita": [
-    "/images/products/lupita/lupita.jpg",
-    "/images/products/lupita/lupita2.jpg",
-    "/images/products/lupita/lupita3.jpg",
-    "/images/products/lupita/lupita4.jpg",
-    "/images/products/lupita/lupita5.jpg",
-    "/images/products/lupita/lupita6.jpg",
-    "/images/products/lupita/lupita7.jpg",
-    "/images/products/lupita/lupita8.jpg",
-    "/images/products/lupita/lupita11.mp4"
+    "/lumos-paola/images/products/lupita/lupita.jpg",
+    "/lumos-paola/images/products/lupita/lupita2.jpg",
+    "/lumos-paola/images/products/lupita/lupita3.jpg",
+    "/lumos-paola/images/products/lupita/lupita4.jpg",
+    "/lumos-paola/images/products/lupita/lupita5.jpg",
+    "/lumos-paola/images/products/lupita/lupita6.jpg",
+    "/lumos-paola/images/products/lupita/lupita7.jpg",
+    "/lumos-paola/images/products/lupita/lupita8.jpg",
+    "/lumos-paola/images/products/lupita/lupita11.mp4"
   ],
   "margaritas": [
-    "/images/products/margaritas/margaritas.jpg",
-    "/images/products/margaritas/margaritas2.jpg",
-    "/images/products/margaritas/margaritas3.jpg",
-    "/images/products/margaritas/margaritas4.jpg",
-    "/images/products/margaritas/margaritas5.jpg",
-    "/images/products/margaritas/margaritas6.jpg",
-    "/images/products/margaritas/margaritas7.jpg",
-    "/images/products/margaritas/margaritas8.jpg",
-    "/images/products/margaritas/margaritas9.jpg"
+    "/lumos-paola/images/products/margaritas/margaritas.jpg",
+    "/lumos-paola/images/products/margaritas/margaritas2.jpg",
+    "/lumos-paola/images/products/margaritas/margaritas3.jpg",
+    "/lumos-paola/images/products/margaritas/margaritas4.jpg",
+    "/lumos-paola/images/products/margaritas/margaritas5.jpg",
+    "/lumos-paola/images/products/margaritas/margaritas6.jpg",
+    "/lumos-paola/images/products/margaritas/margaritas7.jpg",
+    "/lumos-paola/images/products/margaritas/margaritas8.jpg",
+    "/lumos-paola/images/products/margaritas/margaritas9.jpg"
   ],
   "peonias": [
-    "/images/products/peonias/peonias1.jpg",
-    "/images/products/peonias/peonias2.jpg",
-    "/images/products/peonias/peonias3.jpg"
+    "/lumos-paola/images/products/peonias/peonias1.jpg",
+    "/lumos-paola/images/products/peonias/peonias2.jpg",
+    "/lumos-paola/images/products/peonias/peonias3.jpg"
   ],
   "recordatorios": [
-    "/images/products/recordatorios/recordatorios.jpg",
-    "/images/products/recordatorios/recuerdo2.jpg"
+    "/lumos-paola/images/products/recordatorios/recordatorios.jpg",
+    "/lumos-paola/images/products/recordatorios/recuerdo2.jpg"
   ],
   "rosas": [
-    "/images/products/rosas/rosas-2.jpg",
-    "/images/products/rosas/rosas-3.jpg",
-    "/images/products/rosas/rosas.jpg"
+    "/lumos-paola/images/products/rosas/rosas-2.jpg",
+    "/lumos-paola/images/products/rosas/rosas-3.jpg",
+    "/lumos-paola/images/products/rosas/rosas.jpg"
   ]
 }

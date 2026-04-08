@@ -11,7 +11,7 @@
 import fs from 'fs'
 import path from 'path'
 
-const BASE_PATH   = (process.env.NEXT_PUBLIC_BASE_PATH ?? '').replace(/\/$/, '')
+const BASE_PATH   = '/lumos-paola'
 const PUBLIC_DIR  = path.join(process.cwd(), 'public', 'images')
 const IMAGE_EXTS  = /\.(jpg|jpeg|png|webp|gif|avif|mp4|mov)$/i
 
