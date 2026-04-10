@@ -2,25 +2,19 @@
 // Re-generated on every "npm run build" and "npm run dev"
 
 export const ABOUT_IMAGES: string[] = [
-  "/lumos-paola/images/about/about-1.jpg",
-  "/lumos-paola/images/about/about-2.jpg",
-  "/lumos-paola/images/about/about-3.jpg",
-  "/lumos-paola/images/about/about-4.jpg",
-  "/lumos-paola/images/about/about-5.jpg",
-  "/lumos-paola/images/about/about-6.jpg",
-  "/lumos-paola/images/about/about-7.jpg",
-  "/lumos-paola/images/about/about-8.jpg",
-  "/lumos-paola/images/about/about-9.jpg",
-  "/lumos-paola/images/about/about-10.jpg",
-  "/lumos-paola/images/about/about-11.jpg",
-  "/lumos-paola/images/about/about-12.jpg",
-  "/lumos-paola/images/about/about-13.jpg"
+  "/lumos-paola/images/about/galleri1.jpg",
+  "/lumos-paola/images/about/galleri2.jpg",
+  "/lumos-paola/images/about/galleri3.jpg"
 ]
 
 export const GALLERY_IMAGES: string[] = [
-  "/lumos-paola/images/gallery/galleri1.jpg",
-  "/lumos-paola/images/gallery/galleri2.jpg",
-  "/lumos-paola/images/gallery/galleri3.jpg"
+  "/lumos-paola/images/gallery/CanastaDeVelasRosas.jpeg",
+  "/lumos-paola/images/gallery/IloveyouVelasFlorales.jpeg",
+  "/lumos-paola/images/gallery/MiniVelasPeonias.jpeg",
+  "/lumos-paola/images/gallery/MOMcajadevelasflorales.jpeg",
+  "/lumos-paola/images/gallery/RosasCajaRecuerdos.jpeg",
+  "/lumos-paola/images/gallery/VelasaromaticasLUPITA.jpg",
+  "/lumos-paola/images/gallery/VelasdeGirasoles.jpeg"
 ]
 
 export const PRODUCT_IMAGES: Record<string, string[]> = {
