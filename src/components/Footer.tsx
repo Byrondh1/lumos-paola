@@ -92,9 +92,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-brand-cream/35 text-xs">
             © {new Date().getFullYear()} Lumos By Paola. Todos los derechos reservados.
+          </p>
+          <p className="text-brand-cream/30 text-xs tracking-wide">
+            Designed by EB Corp
           </p>
           <p className="text-brand-cream/25 text-xs font-cursive text-lg">
             hecho con amor ❧
