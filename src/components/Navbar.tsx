@@ -18,7 +18,7 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? 'bg-white/95 backdrop-blur-md shadow-md shadow-brand-green/10'
-          : 'bg-transparent'
+          : 'bg-gradient-to-b from-black/50 to-transparent'
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -27,9 +27,13 @@ export default function Navbar() {
           {/* Logo */}
           <a href="#inicio" className="flex items-center gap-2 group">
             <FlameIcon className="w-7 h-7 text-brand-peach group-hover:scale-110 transition-transform" />
-            <span className="font-cursive text-2xl text-brand-green leading-none">
+            <span className={`font-cursive text-2xl leading-none transition-colors duration-300 ${
+              isScrolled ? 'text-brand-green' : 'text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]'
+            }`}>
               Lumos
-              <span className="font-heading font-normal text-base ml-1 text-brand-text-mid not-italic">
+              <span className={`font-heading font-normal text-base ml-1 not-italic transition-colors duration-300 ${
+                isScrolled ? 'text-brand-text-mid' : 'text-white/90'
+              }`}>
                 by Paola
               </span>
             </span>
@@ -41,7 +45,11 @@ export default function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="text-sm text-brand-text-mid hover:text-brand-peach transition-colors duration-200 tracking-wide font-body"
+                  className={`text-sm transition-colors duration-200 tracking-wide font-body ${
+                    isScrolled
+                      ? 'text-brand-text-mid hover:text-brand-peach'
+                      : 'text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.5)] hover:text-brand-peach'
+                  }`}
                 >
                   {link.label}
                 </a>
@@ -62,7 +70,9 @@ export default function Navbar() {
             </a>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden p-2 text-brand-green hover:text-brand-peach transition-colors"
+              className={`md:hidden p-2 transition-colors ${
+                isScrolled ? 'text-brand-green hover:text-brand-peach' : 'text-white hover:text-brand-peach'
+              }`}
               aria-label="Menú"
             >
               {menuOpen ? <CloseIcon className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
