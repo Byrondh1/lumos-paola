@@ -57,18 +57,6 @@ export const PRODUCTS: Product[] = [
   },
   // Arreglos
   {
-    id: 'arreglo-14',
-    name: 'Arreglo de 14 Flores',
-    description: 'Combinaciones florales en cera, perfectas como detalle especial para cualquier ocasión.',
-    category: 'arrangements',
-  },
-  {
-    id: 'arreglo-20',
-    name: 'Arreglo de 20 Flores',
-    description: 'Una opción más lujosa y completa. El regalo ideal para sorprender a alguien especial.',
-    category: 'arrangements',
-  },
-  {
     id: 'canasta',
     name: 'Canasta de Regalo',
     description: 'Mezcla de velas aromáticas y flores decorativas. El regalo perfecto en una presentación única.',
