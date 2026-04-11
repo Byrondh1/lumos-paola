@@ -1,8 +1,46 @@
+'use client'
+
+import { useRef, useEffect, useCallback } from 'react'
 import { WHATSAPP_URL } from '@/lib/constants'
 
 export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const glowRef    = useRef<HTMLDivElement>(null)
+
+  const onMouseMove = useCallback((e: MouseEvent) => {
+    const glow    = glowRef.current
+    const section = sectionRef.current
+    if (!glow || !section) return
+    const { left, top } = section.getBoundingClientRect()
+    const x = e.clientX - left
+    const y = e.clientY - top
+    glow.style.background =
+      `radial-gradient(circle at ${x}px ${y}px,` +
+      `rgba(232,149,109,0.20) 0px,` +
+      `rgba(232,149,109,0.07) 110px,` +
+      `transparent 240px,` +
+      `rgba(0,0,0,0.38) 430px)`
+    glow.style.opacity = '1'
+  }, [])
+
+  const onMouseLeave = useCallback(() => {
+    if (glowRef.current) glowRef.current.style.opacity = '0'
+  }, [])
+
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+    section.addEventListener('mousemove', onMouseMove)
+    section.addEventListener('mouseleave', onMouseLeave)
+    return () => {
+      section.removeEventListener('mousemove', onMouseMove)
+      section.removeEventListener('mouseleave', onMouseLeave)
+    }
+  }, [onMouseMove, onMouseLeave])
+
   return (
     <section
+      ref={sectionRef}
       id="inicio"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{ backgroundColor: '#2D4A2D' }}
@@ -22,6 +60,14 @@ export default function Hero() {
         <div className="absolute top-1/3 left-1/4 w-80 h-80 rounded-full bg-brand-peach/10 blur-3xl" />
         <div className="absolute bottom-1/3 right-1/4 w-96 h-96 rounded-full bg-brand-cream/8 blur-3xl" />
       </div>
+
+      {/* Candle-glow cursor effect — follows the mouse with a warm peach light */}
+      <div
+        ref={glowRef}
+        className="absolute inset-0 pointer-events-none opacity-0"
+        style={{ transition: 'opacity 0.6s ease' }}
+        aria-hidden="true"
+      />
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto pt-20">
