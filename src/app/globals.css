@@ -99,6 +99,25 @@ body {
   .hero-anim { animation: none; }
 }
 
+/* ── Candle flame animations ─────────────────── */
+@keyframes candle-flicker {
+  0%,100% { transform: scaleX(1)    scaleY(1)    rotate(0deg);    opacity: 0.80; }
+  15%     { transform: scaleX(1.09) scaleY(1.16) rotate(1.5deg);  opacity: 1.00; }
+  30%     { transform: scaleX(0.93) scaleY(0.94) rotate(-1.2deg); opacity: 0.65; }
+  50%     { transform: scaleX(1.06) scaleY(1.10) rotate(0.7deg);  opacity: 0.90; }
+  70%     { transform: scaleX(0.96) scaleY(1.04) rotate(-0.6deg); opacity: 0.76; }
+  85%     { transform: scaleX(1.04) scaleY(1.07) rotate(0.4deg);  opacity: 0.84; }
+}
+
+@keyframes candle-glow-pulse {
+  0%,100% { transform: translate(-50%, -50%) scale(1);    opacity: 0.50; }
+  50%     { transform: translate(-50%, -50%) scale(1.22); opacity: 0.78; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [class*="candle-"] { animation: none !important; }
+}
+
 /* ── Floral corner decoration (reusable class) ── */
 .floral-corner {
   position: relative;

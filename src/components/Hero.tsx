@@ -3,6 +3,22 @@
 import { useRef, useEffect, useCallback } from 'react'
 import { WHATSAPP_URL } from '@/lib/constants'
 
+// Candle positions: x/y as % of section, s=size scale, d=flicker duration(s), delay(s)
+const CANDLES = [
+  { x:  5, y: 70, s: 0.80, d: 2.8, delay: 0.0 },
+  { x: 14, y: 82, s: 0.60, d: 3.3, delay: 0.7 },
+  { x: 24, y: 76, s: 0.72, d: 2.6, delay: 1.4 },
+  { x: 73, y: 73, s: 0.88, d: 3.0, delay: 0.3 },
+  { x: 83, y: 66, s: 0.75, d: 2.4, delay: 1.9 },
+  { x: 91, y: 79, s: 0.65, d: 3.2, delay: 0.9 },
+  { x: 96, y: 62, s: 0.55, d: 2.7, delay: 2.2 },
+  { x: 38, y: 88, s: 0.55, d: 3.5, delay: 1.1 },
+  { x: 62, y: 86, s: 0.60, d: 2.9, delay: 1.7 },
+  { x:  2, y: 88, s: 0.50, d: 3.1, delay: 2.5 },
+  { x: 97, y: 90, s: 0.50, d: 2.5, delay: 1.6 },
+  { x: 50, y: 93, s: 0.45, d: 3.4, delay: 0.5 },
+]
+
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
   const glowRef    = useRef<HTMLDivElement>(null)
@@ -59,6 +75,65 @@ export default function Hero() {
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/3 left-1/4 w-80 h-80 rounded-full bg-brand-peach/10 blur-3xl" />
         <div className="absolute bottom-1/3 right-1/4 w-96 h-96 rounded-full bg-brand-cream/8 blur-3xl" />
+      </div>
+
+      {/* Animated candle flames — scattered along edges and bottom */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+        {CANDLES.map((c, i) => (
+          <div
+            key={i}
+            className="absolute"
+            style={{ left: `${c.x}%`, top: `${c.y}%` }}
+          >
+            {/* Ambient halo */}
+            <div
+              style={{
+                position: 'absolute',
+                width:  `${c.s * 150}px`,
+                height: `${c.s * 150}px`,
+                borderRadius: '50%',
+                transform: 'translate(-50%, -50%)',
+                background: `radial-gradient(ellipse at 50% 55%,
+                  rgba(232,149,109,0.22) 0%,
+                  rgba(200,110,40,0.08) 45%,
+                  transparent 70%)`,
+                animation: `candle-glow-pulse ${(c.d * 1.25).toFixed(2)}s ease-in-out infinite ${(c.delay + 0.3).toFixed(2)}s`,
+              }}
+            />
+            {/* Flame body */}
+            <div
+              style={{
+                position: 'absolute',
+                width:  `${c.s * 16}px`,
+                height: `${c.s * 28}px`,
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -95%)',
+                borderRadius: '45% 45% 55% 55% / 30% 30% 70% 70%',
+                background: 'linear-gradient(to top, rgba(255,150,30,0.75) 0%, rgba(232,90,15,0.45) 55%, transparent 100%)',
+                filter: `blur(${(c.s * 2.5).toFixed(1)}px)`,
+                animation: `candle-flicker ${c.d}s ease-in-out infinite ${c.delay}s`,
+                transformOrigin: 'bottom center',
+              }}
+            />
+            {/* Bright inner core */}
+            <div
+              style={{
+                position: 'absolute',
+                width:  `${c.s * 7}px`,
+                height: `${c.s * 12}px`,
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -108%)',
+                borderRadius: '45% 45% 55% 55% / 30% 30% 70% 70%',
+                background: 'rgba(255, 215, 110, 0.82)',
+                filter: `blur(${(c.s * 1.2).toFixed(1)}px)`,
+                animation: `candle-flicker ${(c.d * 0.88).toFixed(2)}s ease-in-out infinite ${(c.delay + 0.15).toFixed(2)}s`,
+                transformOrigin: 'bottom center',
+              }}
+            />
+          </div>
+        ))}
       </div>
 
       {/* Candle-glow cursor effect — follows the mouse with a warm peach light */}
