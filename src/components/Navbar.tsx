@@ -25,18 +25,12 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-20">
 
           {/* Logo */}
-          <a href="#inicio" className="flex items-center gap-2 group">
-            <FlameIcon className="w-7 h-7 text-brand-peach group-hover:scale-110 transition-transform" />
-            <span className={`font-cursive text-2xl leading-none transition-colors duration-300 ${
-              isScrolled ? 'text-brand-green' : 'text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.4)]'
-            }`}>
-              Lumos
-              <span className={`font-heading font-normal text-base ml-1 not-italic transition-colors duration-300 ${
-                isScrolled ? 'text-brand-text-mid' : 'text-white/90'
-              }`}>
-                by Paola
-              </span>
-            </span>
+          <a href="#inicio" className="flex items-center group">
+            <img
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/images/logo.png`}
+              alt="Lumos by Paola"
+              className="h-12 md:h-14 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+            />
           </a>
 
           {/* Desktop Links */}
@@ -111,14 +105,6 @@ export default function Navbar() {
         )}
       </nav>
     </header>
-  )
-}
-
-function FlameIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2c0 0-6 5.686-6 10a6 6 0 0012 0c0-1.606-.481-3.048-1.2-4.2-.5.9-1.177 1.7-2.1 2.1C14.7 8.1 13.5 5.65 12 2z" />
-    </svg>
   )
 }
 
