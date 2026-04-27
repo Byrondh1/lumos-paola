@@ -55,6 +55,12 @@ export const PRODUCTS: Product[] = [
     description: 'Diseños específicos y personalizados para Bodas, Bautizos y Graduaciones.',
     category: 'special',
   },
+  {
+    id: 'religiosas',
+    name: 'Velas Religiosas',
+    description: 'Virgencitas y figuras religiosas elaboradas en cera artesanal. Perfectas como regalo devocional o decoración especial.',
+    category: 'special',
+  },
   // Arreglos
   {
     id: 'canasta',
