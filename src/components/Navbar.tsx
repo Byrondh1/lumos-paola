@@ -27,7 +27,7 @@ export default function Navbar() {
           {/* Logo */}
           <a href="#inicio" className="flex items-center group">
             <img
-              src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/images/logo.png`}
+              src="/lumos-paola/images/logo.png"
               alt="Lumos by Paola"
               className="h-12 md:h-14 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
             />
