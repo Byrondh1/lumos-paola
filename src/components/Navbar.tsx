@@ -26,11 +26,19 @@ export default function Navbar() {
 
           {/* Logo */}
           <a href="#inicio" className="flex items-center group">
-            <img
-              src="/lumos-paola/images/logo.png"
-              alt="Lumos by Paola"
-              className="h-12 md:h-14 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
-            />
+            <span
+              className="font-cormorant select-none leading-none"
+              style={{
+                fontSize: '2.1rem',
+                fontWeight: 500,
+                background: 'linear-gradient(to right, #C9A96E, #C4927A)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              <span style={{ fontSize: '1.18em' }}>L</span>umos
+            </span>
           </a>
 
           {/* Desktop Links */}

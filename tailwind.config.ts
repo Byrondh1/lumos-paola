@@ -26,6 +26,7 @@ const config: Config = {
         },
       },
       fontFamily: {
+        cormorant:  ['var(--font-cormorant)', 'Playfair Display', 'Georgia', 'serif'],
         heading:    ['var(--font-playfair)', 'Georgia', 'serif'],
         cursive:    ['var(--font-dancing)', 'cursive'],
         body:       ['var(--font-lato)', 'system-ui', 'sans-serif'],
