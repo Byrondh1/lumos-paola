@@ -126,18 +126,6 @@ export default function Hero() {
           />
         </div>
 
-        {/* Floral separator */}
-        <div
-          className="hero-anim flex items-center justify-center gap-4 mb-7"
-          style={{ animationDelay: '0.55s' }}
-        >
-          <div className="h-px w-16 bg-brand-peach/60" />
-          <svg className="w-6 h-6 text-brand-peach/80" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2a2 2 0 00-2 2c0 .74.4 1.38 1 1.72V7h-2a2 2 0 000 4h.28A2 2 0 008 13a2 2 0 002 2v.28A2 2 0 0012 17a2 2 0 002-1.72V13a2 2 0 002-2 2 2 0 00-2.28-1.98H14V5.72A2 2 0 0014 4a2 2 0 00-2-2z"/>
-          </svg>
-          <div className="h-px w-16 bg-brand-peach/60" />
-        </div>
-
         {/* Slogan */}
         <p
           className="hero-anim font-heading italic text-xl md:text-2xl text-white/85 mb-4"
