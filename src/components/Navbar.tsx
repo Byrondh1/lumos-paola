@@ -25,19 +25,37 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-20">
 
           {/* Logo */}
-          <a href="#inicio" className="flex items-center group">
+          <a href="#inicio" className="flex items-center gap-2 group">
+            {/* Flame icon */}
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              style={{ width: '22px', height: '22px', flexShrink: 0 }}
+              aria-hidden="true"
+            >
+              <path
+                d="M12 2C12 2 7 7.2 7 11.5a5 5 0 0 0 10 0c0-1.5-.5-2.9-1.25-4-.45.85-1.1 1.6-1.95 2C15.1 7.8 14 5.5 12 2Z"
+                fill="#C9A96E"
+              />
+              <path
+                d="M12 13.5c0 0-2-1.5-2-3 0-.6.2-1.1.5-1.5C11 10.5 11.5 11.5 12 11.5s1-1 1.5-2.5c.3.4.5.9.5 1.5 0 1.5-2 3-2 3Z"
+                fill="#C4927A"
+                opacity="0.8"
+              />
+            </svg>
+            {/* Brand name */}
             <span
               className="font-cormorant select-none leading-none"
               style={{
-                fontSize: '2.1rem',
-                fontWeight: 500,
+                fontSize: '1.65rem',
+                fontWeight: 400,
                 background: 'linear-gradient(to right, #C9A96E, #C4927A)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
               }}
             >
-              <span style={{ fontSize: '1.18em' }}>L</span>umos
+              Lumos
             </span>
           </a>
 
