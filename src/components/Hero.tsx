@@ -122,7 +122,7 @@ export default function Hero() {
           <img
             src="/lumos-paola/images/logo.png"
             alt="Lumos by Paola"
-            className="w-[300px] md:w-[360px] lg:w-[400px] h-auto object-contain"
+            className="w-[380px] md:w-[460px] lg:w-[520px] h-auto object-contain"
           />
         </div>
 
