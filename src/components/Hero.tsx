@@ -114,19 +114,17 @@ export default function Hero() {
           </span>
         </div>
 
-        {/* Cursive title */}
-        <h1
-          className="hero-anim font-cursive text-6xl md:text-8xl lg:text-9xl text-white mb-2 leading-none"
+        {/* Logo */}
+        <div
+          className="hero-anim flex justify-center mb-6"
           style={{ animationDelay: '0.3s' }}
         >
-          Lumos
-        </h1>
-        <p
-          className="hero-anim font-heading italic text-brand-cream/90 text-xl md:text-2xl lg:text-3xl font-light mb-6"
-          style={{ animationDelay: '0.45s' }}
-        >
-          by Paola
-        </p>
+          <img
+            src="/lumos-paola/images/logo.png"
+            alt="Lumos by Paola"
+            className="w-[300px] md:w-[360px] lg:w-[400px] h-auto object-contain"
+          />
+        </div>
 
         {/* Floral separator */}
         <div
