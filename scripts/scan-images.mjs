@@ -21,7 +21,7 @@ function scanFolder(folder) {
   return fs.readdirSync(dir)
     .filter((f) => IMAGE_EXTS.test(f))
     .sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }))
-    .map((f) => `${BASE_PATH}/images/${folder}/${f}`)
+    .map((f) => `${BASE_PATH}/images/${folder}/${encodeURIComponent(f)}`)
 }
 
 function scanSubfolders(parent) {

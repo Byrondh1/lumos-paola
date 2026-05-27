@@ -123,6 +123,8 @@ export default function Hero() {
             src="/lumos-paola/images/logo.png"
             alt="Lumos by Paola"
             className="w-[380px] md:w-[460px] lg:w-[520px] h-auto object-contain"
+            fetchPriority="high"
+            loading="eager"
           />
         </div>
 

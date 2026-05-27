@@ -47,6 +47,7 @@ export default function Gallery() {
                   src={src}
                   alt={fileLabel(src)}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-green/70 via-brand-green/10 to-transparent" />
 

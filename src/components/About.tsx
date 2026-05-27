@@ -51,17 +51,17 @@ export default function About() {
             <div className="grid grid-cols-2 gap-3" style={{ gridTemplateRows: '220px 200px' }}>
               <div className="col-span-2 rounded-2xl overflow-hidden shadow-lg shadow-brand-green/10 bg-brand-cream">
                 {collage[0] && (
-                  <img src={collage[0]} alt="Lumos by Paola" className="w-full h-full object-cover" />
+                  <img src={collage[0]} alt="Velas artesanales Lumos by Paola" className="w-full h-full object-cover" loading="lazy" />
                 )}
               </div>
               <div className="rounded-2xl overflow-hidden shadow-md shadow-brand-green/10 bg-brand-cream">
                 {collage[1] && (
-                  <img src={collage[1]} alt="Lumos by Paola" className="w-full h-full object-cover" />
+                  <img src={collage[1]} alt="Proceso artesanal Lumos by Paola" className="w-full h-full object-cover" loading="lazy" />
                 )}
               </div>
               <div className="rounded-2xl overflow-hidden shadow-md shadow-brand-green/10 bg-brand-cream">
                 {collage[2] && (
-                  <img src={collage[2]} alt="Lumos by Paola" className="w-full h-full object-cover" />
+                  <img src={collage[2]} alt="Diseños únicos Lumos by Paola" className="w-full h-full object-cover" loading="lazy" />
                 )}
               </div>
             </div>
@@ -91,7 +91,7 @@ export default function About() {
             <div className="flex gap-3 overflow-x-auto pb-2 mb-16 scrollbar-hide">
               {strip.map((src, i) => (
                 <div key={src} className="flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden shadow-sm shadow-brand-green/10">
-                  <img src={src} alt={`Lumos by Paola ${i + 4}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                  <img src={src} alt={`Lumos by Paola ${i + 4}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
                 </div>
               ))}
             </div>
