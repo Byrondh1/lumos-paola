@@ -75,6 +75,13 @@ body {
   }
 }
 
+/* ── Focus ring (WCAG 2.4.7) ────────────────── */
+:focus-visible {
+  outline: 2px solid #E8956D;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 /* ── Scrollbar ───────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track  { background: #F5EDD8; }
@@ -95,7 +102,8 @@ body {
 .animate-lb-in { animation: lbIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) both; }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-anim { animation: none; }
+  .hero-anim,
+  .animate-lb-in { animation: none; }
 }
 
 /* ── Candle flame animations ─────────────────── */

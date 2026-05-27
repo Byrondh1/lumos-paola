@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { SOCIAL } from '@/lib/constants'
 import Animate from '@/components/Animate'
 import { GALLERY_IMAGES } from '@/data/site-images'
@@ -14,6 +14,21 @@ function fileLabel(src: string): string {
 
 export default function Gallery() {
   const [lightbox, setLightbox] = useState<number | null>(null)
+  const closeBtnRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    if (lightbox === null) return
+    closeBtnRef.current?.focus()
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setLightbox(null)
+    }
+    document.addEventListener('keydown', handler)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', handler)
+      document.body.style.overflow = ''
+    }
+  }, [lightbox])
 
   return (
     <section id="galeria" className="py-20 md:py-28 bg-brand-green-pale">
@@ -110,10 +125,15 @@ export default function Gallery() {
       {/* Lightbox */}
       {lightbox !== null && (
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={fileLabel(GALLERY_IMAGES[lightbox])}
           className="fixed inset-0 bg-brand-green/95 z-50 flex items-center justify-center p-4 backdrop-blur-sm"
           onClick={() => setLightbox(null)}
         >
           <button
+            ref={closeBtnRef}
+            aria-label="Cerrar"
             className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/20 transition-all"
             onClick={(e) => { e.stopPropagation(); setLightbox(null) }}
           >

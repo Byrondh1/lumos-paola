@@ -11,8 +11,14 @@ import WhatsAppFAB from '@/components/WhatsAppFAB'
 export default function Home() {
   return (
     <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-brand-peach focus:text-white focus:rounded-full focus:shadow-lg focus:text-sm focus:font-semibold"
+      >
+        Saltar al contenido principal
+      </a>
       <Navbar />
-      <main>
+      <main id="main-content">
         <Hero />
         <About />
         <Products />

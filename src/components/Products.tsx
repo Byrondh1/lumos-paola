@@ -103,6 +103,7 @@ export default function Products() {
                       <button
                         onClick={() => openLightbox(allImages, 0, product.name)}
                         className="w-full h-full cursor-zoom-in"
+                        aria-label={`Ver imágenes de ${product.name}`}
                       >
                         <img
                           src={mainImage}

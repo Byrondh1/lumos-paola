@@ -21,7 +21,7 @@ export default function Navbar() {
           : 'bg-gradient-to-b from-black/50 to-transparent'
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Navegación principal" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
 
           {/* Logo */}
@@ -94,6 +94,8 @@ export default function Navbar() {
                 isScrolled ? 'text-brand-green hover:text-brand-peach' : 'text-white hover:text-brand-peach'
               }`}
               aria-label="Menú"
+              aria-expanded={menuOpen}
+              aria-controls="mobile-menu"
             >
               {menuOpen ? <CloseIcon className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
             </button>
@@ -102,7 +104,7 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         {menuOpen && (
-          <div className="md:hidden border-t border-brand-cream-dark py-4 bg-white/98">
+          <div id="mobile-menu" className="md:hidden border-t border-brand-cream-dark py-4 bg-white/98">
             <ul className="flex flex-col gap-1">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>

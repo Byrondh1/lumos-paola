@@ -19,15 +19,36 @@ export default function Lightbox({ images, index, productName, onClose, onNaviga
   const hasPrev = index > 0
   const hasNext = index < images.length - 1
   const videoRef = useRef<HTMLVideoElement>(null)
+  const dialogRef = useRef<HTMLDivElement>(null)
+  const closeBtnRef = useRef<HTMLButtonElement>(null)
 
   const prev = useCallback(() => { if (hasPrev) onNavigate(index - 1) }, [hasPrev, index, onNavigate])
   const next = useCallback(() => { if (hasNext) onNavigate(index + 1) }, [hasNext, index, onNavigate])
 
   useEffect(() => {
+    closeBtnRef.current?.focus()
+  }, [])
+
+  useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
-      if (e.key === 'ArrowLeft') prev()
-      if (e.key === 'ArrowRight') next()
+      if (e.key === 'Escape') { onClose(); return }
+      if (e.key === 'ArrowLeft') { prev(); return }
+      if (e.key === 'ArrowRight') { next(); return }
+      if (e.key === 'Tab') {
+        const focusable = Array.from(
+          dialogRef.current?.querySelectorAll<HTMLElement>(
+            'button:not([disabled]), [href], input, [tabindex]:not([tabindex="-1"])'
+          ) ?? []
+        )
+        if (!focusable.length) return
+        const first = focusable[0]
+        const last = focusable[focusable.length - 1]
+        if (e.shiftKey) {
+          if (document.activeElement === first) { e.preventDefault(); last.focus() }
+        } else {
+          if (document.activeElement === last) { e.preventDefault(); first.focus() }
+        }
+      }
     }
     document.addEventListener('keydown', handler)
     document.body.style.overflow = 'hidden'
@@ -48,6 +69,10 @@ export default function Lightbox({ images, index, productName, onClose, onNaviga
 
   return createPortal(
     <div
+      ref={dialogRef}
+      role="dialog"
+      aria-modal="true"
+      aria-label={productName}
       className="fixed inset-0 z-[9999] flex items-center justify-center"
       onClick={onClose}
     >
@@ -83,6 +108,7 @@ export default function Lightbox({ images, index, productName, onClose, onNaviga
 
       {/* Close button — z-20 */}
       <button
+        ref={closeBtnRef}
         onClick={(e) => { e.stopPropagation(); onClose() }}
         aria-label="Cerrar"
         className="absolute top-5 right-5 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-zinc-900/80 border border-zinc-700 text-zinc-400 hover:text-brand-peach hover:border-brand-peach/50 transition-all duration-200"
@@ -135,6 +161,8 @@ export default function Lightbox({ images, index, productName, onClose, onNaviga
             <button
               key={i}
               onClick={() => onNavigate(i)}
+              aria-label={`Modelo ${i + 1}${i === index ? ' (actual)' : ''}`}
+              aria-pressed={i === index}
               className={`relative w-12 h-12 rounded-lg overflow-hidden ring-2 transition-all duration-200 ${
                 i === index
                   ? 'ring-brand-peach scale-110'
