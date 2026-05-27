@@ -79,52 +79,6 @@ export default function Products() {
                 delay={(idx % 3) * 100}
                 className="relative group"
               >
-                {/* Hover popup — variants gallery */}
-                {allImages.length > 1 && (
-                  <div className="absolute bottom-[calc(100%+10px)] left-0 right-0 z-50 opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto">
-                    <div className="bg-white/97 backdrop-blur-md border border-brand-peach/25 rounded-2xl p-3.5 shadow-2xl shadow-brand-green/20">
-                      {/* Popup header */}
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className="w-1.5 h-1.5 rounded-full bg-brand-peach" />
-                        <p className="text-brand-peach text-[10px] font-semibold uppercase tracking-[0.15em]">
-                          Modelos disponibles
-                        </p>
-                      </div>
-                      {/* Thumbnails */}
-                      <div className={`grid gap-1.5 ${allImages.length === 2 ? 'grid-cols-2' : allImages.length <= 4 ? 'grid-cols-2' : 'grid-cols-3'}`}>
-                        {allImages.map((src, i) => (
-                          <button
-                            key={i}
-                            onClick={() => openLightbox(allImages, i, product.name)}
-                            className="relative aspect-square rounded-xl overflow-hidden ring-1 ring-brand-cream-dark hover:ring-brand-peach/60 hover:scale-105 transition-all duration-200 cursor-pointer"
-                          >
-                            {isVideo(src) ? (
-                              <video
-                                src={src}
-                                preload="metadata"
-                                muted
-                                playsInline
-                                className="w-full h-full object-cover"
-                              />
-                            ) : (
-                              <img
-                                src={src}
-                                alt={`${product.name} — modelo ${i + 1}`}
-                                className="w-full h-full object-cover"
-                              />
-                            )}
-                            {isVideo(src) && <PlayOverlay />}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                    {/* Arrow pointing down */}
-                    <div className="flex justify-center -mt-px overflow-hidden h-2">
-                      <div className="w-3 h-3 bg-white border-r border-b border-brand-peach/25 rotate-45 -translate-y-1.5" />
-                    </div>
-                  </div>
-                )}
-
                 {/* Product card */}
                 <div className="card-cream relative flex flex-col h-full">
                   {/* Featured Badge */}
