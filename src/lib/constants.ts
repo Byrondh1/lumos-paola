@@ -1,4 +1,4 @@
-export const WHATSAPP_NUMBER = '593962927911'
+export const WHATSAPP_NUMBER = '593996670115'
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`
 export const EMAIL = 'tefapayo@hotmail.com'
 

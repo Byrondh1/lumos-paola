@@ -58,7 +58,7 @@ export default function Footer() {
                 className="flex items-center gap-2 text-brand-cream/50 text-sm hover:text-brand-peach transition-colors"
               >
                 <WhatsAppIcon className="w-4 h-4 text-green-400" />
-                +593 96 292 7911
+                +593 99 667 0115
               </a>
               <a
                 href={`mailto:${EMAIL}`}

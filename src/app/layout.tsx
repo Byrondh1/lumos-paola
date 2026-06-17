@@ -14,10 +14,10 @@ const jsonLd = {
   description:
     'Velas aromáticas artesanales hechas 100% a mano. Diseños florales, religiosos y personalizados para eventos, regalos y recordatorios en Ecuador.',
   url: `${SITE_URL}/`,
-  telephone: '+593962927911',
+  telephone: '+593996670115',
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+593962927911',
+    telephone: '+593996670115',
     contactType: 'customer service',
     availableLanguage: 'Spanish',
   },
